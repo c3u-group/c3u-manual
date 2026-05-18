@@ -1,0 +1,20 @@
+.content p,
+.content ol,
+.content ul {
+  line-height: 1.8em;
+}
+
+p {
+  text-indent: 2em;
+}
+
+p:has(img) {
+  text-indent: 0;
+  text-align: center;
+}
+
+.content p img {
+  max-width: 75%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+

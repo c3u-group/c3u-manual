@@ -1,0 +1,9 @@
+[book]
+title = "清洁燃烧与碳循环利用团队  通用手册"
+authors = ["c3u-group"]
+language = "zh"
+description = "清洁燃烧与碳循环利用团队的通用手册，包含管理规范、设备操作、软件教程、资源指南、常用模板等。"
+
+[output.html]
+additional-css = ["theme/css/indent.css", "theme/css/form.css"]
+additional-js = ["theme/js/external-links.js", "theme/js/form.js"]
