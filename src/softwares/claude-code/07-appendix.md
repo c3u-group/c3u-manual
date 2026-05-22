@@ -286,38 +286,69 @@ Mac 和 Linux 用户同样可以使用 Claude Code，主要差异如下：
 - **代理**：终端中 `export HTTPS_PROXY=http://127.0.0.1:7890`
 
 
-Linux(RHEL) 用 USTC 镜像安装 Homebrew ：
+先安装 Homebrew ：
 ```bash
+# 为 brew 更换 USTC 镜像，加速下载：
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+echo >> ~/.bashrc
+echo '# Set non-default Git remotes for Homebrew/brew and Homebrew/homebrew-core.' >> ~/.bashrc
+echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"' >> ~/.bashrc
+echo 'export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"' >> ~/.bashrc
+echo 'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"' >> ~/.bash_profile
+echo 'export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"' >> ~/.bash_profile
+
+# 安装 Homebrew
 /bin/bash -c "$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)"
+
+# 安装后配置，将 brew 配置到环境变量：
+echo >> ~/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> ~/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+# 安装 build 需要的的依赖：
+sudo dnf group install development-tools
+brew install gcc
 ```
 
-安装后配置，将 brew 配置到环境变量：
+随后安装 Claude Code：
+```bash
+brew install claude-code
+```
+
+如果系统上已经安装 Homebrew 和 Claude Code，但 `brew` 和 `claude` 命令均无效，说明未配置环境变量。需要使用以下命令配置：
 ```bash
 echo >> ~/.bashrc
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> ~/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 ```
 
-为 brew 更换 USTC 镜像，加速下载：
-```bash
-echo '# Set non-default Git remotes for Homebrew/brew and Homebrew/homebrew-core.' >> ~/.bashrc
-echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"' >> ~/.bashrc
-echo 'export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"' >> ~/.bashrc
-echo 'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"' >> ~/.bash_profile
-echo 'export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"' >> ~/.bash_profile
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
-export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
-```
+配置接入 `DeepSeek` ：
 
-安装 build 需要的的依赖：
 ```bash
-sudo dnf group install development-tools
-brew install gcc
-```
+# 填入 DeepSeek_API_KEY
+DEEPSEEK_API_KEY='实际API_KEY'
 
+# 创建配置文件 ~/.claude.json 以跳过登录
+jq -n '{"hasCompletedOnboarding": true}' > ~/.claude.json
+# 创建配置文件 ~/.claude/settings.json
+mkdir -p ~/.claude
+jq -n \
+  --arg api_key "$DEEPSEEK_API_KEY" \
+  '{
+    env: {
+      ANTHROPIC_AUTH_TOKEN: $api_key,
+      ANTHROPIC_BASE_URL: "https://api.deepseek.com/anthropic",
+      ANTHROPIC_MODEL: "deepseek-v4-pro[1m]",
+      ANTHROPIC_DEFAULT_HAIKU_MODEL: "deepseek-v4-flash",
+      ANTHROPIC_DEFAULT_SONNET_MODEL: "deepseek-v4-pro",
+      ANTHROPIC_DEFAULT_OPUS_MODEL: "deepseek-v4-pro",
+      CLAUDE_CODE_SUBAGENT_MODEL: "deepseek-v4-pro",
+      CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1",
+      CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK: "1",
+      CLAUDE_CODE_EFFORT_LEVEL: "max"
+    }
+  }' > "$HOME/.claude/settings.json"
+```
