@@ -102,23 +102,6 @@ description: Process TGA data, plot TG/DTG curves, extract characteristic temper
 /plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
-**[nature-skills](https://github.com/Yuan1z0825/nature-skills)** — 符合 Nature 期刊标准的学术写作与绘图工具集（9 个 skill）：
-
-- `nature-figure` — 出版级科研绘图，多面板图表，Nature 配色与字体规范
-- `nature-polishing` — 学术英语润色与中译英，Nature 风格句式与语态控制
-- `nature-writing` — 草拟或重构论文章节（摘要、引言、结果、讨论），从作者提供的研究声明出发构建论证
-- `nature-citation` — 自动匹配 Nature/Science/Cell 系列期刊的参考文献
-- `nature-response` — 逐点回复审稿意见，语气校准，处理大修与小修
-- `nature-reader` — 论文全文双语对照解读，保留图表位置与原文锚点
-- `nature-paper2ppt` — 从论文自动生成组会 PPT，按论证逻辑组织幻灯片
-- `nature-data` — 生成符合 Nature FAIR 标准的数据可用性声明
-- `nature-academic-search` — 跨源文献检索、引文验证与参考文件管理
-
-```text
-/plugin marketplace add https://github.com/Yuan1z0825/nature-skills
-/plugin install nature-skills
-```
-
 ### MCP
 
 MCP（Model Context Protocol）让 Claude Code 连接到外部服务，如数据库、API、文档平台等。通过 MCP，AI 可以直接查询数据、调用远程接口；也可以自行构建 MCP ，调用本地程序。

@@ -54,7 +54,7 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> ~/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 ```
 
-按照 [软件教程 - Claude Code](../../softwares/claude-code/07-appendix.md#附录-fmaclinux-用户提示) 跳过登录并配置自己的 API-KEY 后，输入 `claude` 即可启动。
+按照 [软件教程 - Claude Code](../../softwares/Agent/claude-code/07-appendix.md#附录-fmaclinux-用户提示) 跳过登录并配置自己的 API-KEY 后，输入 `claude` 即可启动。
 
 ## Apptainer
 
