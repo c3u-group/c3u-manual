@@ -2,7 +2,7 @@
 
 ## Windows
 
-### 安装 Claude Code
+### 安装 Claude Code 和 Git
 
 按 `Win` 键，输入 `powershell`，回车，执行：
 
@@ -11,22 +11,11 @@ winget install Anthropic.ClaudeCode --accept-source-agreements
 winget install Git.Git --accept-source-agreements
 ```
 
-### 更新
+### 推荐：安装常用软件
 
-```powershell
-winget upgrade Anthropic.ClaudeCode
-```
-
-### 可选：安装常用软件
-
-（推荐）安装 Visual Studio Code ：
+安装 Visual Studio Code ：
 ```powershell
 winget install Microsoft.VisualStudioCode --accept-source-agreements
-```
-
-安装 Conda ：
-```powershell
-winget install CondaForge.Miniforge --accept-source-agreements
 ```
 
 安装 Python ：
@@ -34,9 +23,9 @@ winget install CondaForge.Miniforge --accept-source-agreements
 winget install Python.Python.3.12 --accept-source-agreements
 ```
 
-安装 NodeJS ：
+安装 Conda ：
 ```powershell
-winget install OpenJS.NodeJS.LTS --accept-source-agreements
+winget install CondaForge.Miniforge --accept-source-agreements
 ```
 
 ### Visual Studio Code 集成
@@ -55,9 +44,9 @@ winget install OpenJS.NodeJS.LTS --accept-source-agreements
 | `Ctrl + D` | 选中相同词，连续按可多选 |
 | `Ctrl + Enter` | 在下方另起一行 |
 | `鼠标中键` | 多光标编辑 |
-| `Ctrl + `` ` | 切换终端 |
+| ``Ctrl + ` `` | 切换终端 |
 
-设置中可开启 `Claude Code: Use Terminal` 以默认使用 CLI 模式，功能更全；但 CLI 模式对新手不够友好，熟悉后再切。
+设置中可开启 `Claude Code: Use Terminal` 以默认使用 CLI 模式，功能更全；但 CLI 模式对新手可能不够友好，熟悉后再切。
 
 ## macOS / Linux
 
@@ -74,27 +63,37 @@ export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 /bin/bash -c "$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)"
 ```
 
-安装完成后，按屏幕提示完成后续配置。Linux 还需额外安装编译依赖（如 `sudo dnf group install development-tools`），照终端提示做即可。
+安装完成后，需按终端提示完成配置。
 
 ### 安装 Claude Code
 
+这一步会从 Anthropic 下载软件包，可能需要开启代理：
+```bash
+export HTTPS_PROXY=http://127.0.0.1:7890
+```
+
+然后安装的 Claude Code
 ```bash
 brew install claude-code
 ```
 
 > 如果报错找不到 `brew` 命令，说明上一步的安装后配置没做或没生效，照 brew 安装完成后的屏幕提示操作即可。
 
-### 更新
-
-```bash
-brew upgrade claude-code
-```
-
-### 可选：安装常用软件
+### 推荐：安装常用软件
 
 安装 Visual Studio Code ：
 ```bash
 brew install --cask visual-studio-code
+```
+
+安装 Git ：
+```bash
+brew install git
+```
+
+安装 Python ：
+```bash
+brew install python
 ```
 
 安装 Conda ：
@@ -117,6 +116,6 @@ brew install --cask miniforge
 | `Cmd + D` | 选中相同词，连续按可多选 |
 | `Cmd + Enter` | 在下方另起一行 |
 | `鼠标中键` | 多光标编辑 |
-| `Cmd + `` ` | 切换终端 |
+| ``Cmd + ` `` | 切换终端 |
 
-设置中可开启 `Claude Code: Use Terminal` 以默认使用 CLI 模式，功能更全；但 CLI 模式对新手不够友好，熟悉后再切。
+设置中可开启 `Claude Code: Use Terminal` 以默认使用 CLI 模式，功能更全；但 CLI 模式对新手可能不够友好，熟悉后再切。

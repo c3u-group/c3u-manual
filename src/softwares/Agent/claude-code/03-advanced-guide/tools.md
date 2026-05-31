@@ -14,10 +14,10 @@ Python 项目推荐安装 pyright：
 pip install pyright
 ```
 
-然后在 Claude Code 中：
+然后在安装 LSP plugin ：
 
-```text
-/plugin install pyright-lsp
+```bash
+claude plugin install pyright-lsp
 ```
 
 ### 网络搜索
@@ -114,8 +114,9 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `/plugin
 
 14 个工程规范 skill，覆盖开发全流程。详细用法见 [附录](../05-appendix/plugins/superpowers-guide.md)。
 
-```text
-/plugin install superpowers
+安装插件：
+```bash
+claude plugin install superpowers
 ```
 
 | Skill | 用途 |
@@ -135,9 +136,14 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `/plugin
 
 Karpathy 提出的四条编码纪律，遏制 AI 常见顽疾。详细说明见 [附录](../05-appendix/plugins/karpathy-guide.md)。
 
-```text
-/plugin marketplace add forrestchang/andrej-karpathy-skills
-/plugin install andrej-karpathy-skills@karpathy-skills
+添加仓库：
+```bash
+claude plugin marketplace add forrestchang/andrej-karpathy-skills
+```
+
+安装插件：
+```bash
+claude plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
 | 原则 | 含义 |
@@ -151,9 +157,14 @@ Karpathy 提出的四条编码纪律，遏制 AI 常见顽疾。详细说明见 
 
 学术研究全流程：文献调研、论文撰写、同行评审、pipeline 编排。详细用法见 [附录](../05-appendix/plugins/ars-guide.md)。
 
-```text
-/plugin marketplace add Imbad0202/academic-research-skills
-/plugin install academic-research-skills
+添加仓库：
+```bash
+claude plugin marketplace add Imbad0202/academic-research-skills
+```
+
+安装插件：
+```bash
+claude plugin install academic-research-skills
 ```
 
 | Skill | 用途 |

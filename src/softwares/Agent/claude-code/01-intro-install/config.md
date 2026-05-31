@@ -4,12 +4,19 @@
 
 前往 [DeepSeek 开放平台](https://platform.deepseek.com)，注册、实名认证、充值后创建 API Key，复制备用。
 
-## Windows
+## Windows（终端）
 
-Claude Code 首次启动会要求登录 Anthropic 账号。使用 DeepSeek API 时无需登录，通过配置文件跳过即可。
+Claude Code 首次启动会要求登录 Anthropic 账号。使用 DeepSeek API 时无需登录，通过配置文件跳过即可。在 PowerShell 中执行：
+
+设置 API Key（替换为已创建的 DeepSeek API Key）：
 
 ```powershell
 $env:DEEPSEEK_API_KEY='你的API_KEY'
+```
+
+创建配置文件：
+
+```powershell
 [Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", $env:DEEPSEEK_API_KEY, "User")
 
 # Claude Code 默认要求登录 Anthropic 账号，此文件跳过该步骤
@@ -35,9 +42,17 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
 
 ## macOS / Linux
 
+在终端中执行：
+
+设置 API Key（替换为已创建的 DeepSeek API Key）：
+
 ```bash
 DEEPSEEK_API_KEY='你的API_KEY'
+```
 
+创建配置文件：
+
+```bash
 # Claude Code 默认要求登录 Anthropic 账号，此文件跳过该步骤
 echo '{"hasCompletedOnboarding": true}' > ~/.claude.json
 
@@ -76,6 +91,13 @@ EOF
 | `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | 禁用非必要网络请求（如版本检查） |
 | `CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK` | 禁用非流式回退 |
 | `CLAUDE_CODE_EFFORT_LEVEL` | 推理深度（`max` 为最高） |
+
+## VSCode 跳过登录
+
+VSCode 插件除上述步骤外，还需在设置中禁用登录提示：
+
+1. 右下角齿轮 → 设置，或 `Cmd + ,`(macOS) / `Ctrl + ,`(Windows/Linux)
+2. 搜索 `claudeCode.disableLoginPrompt`，勾选启用
 
 ## 验证
 
