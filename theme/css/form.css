@@ -49,7 +49,7 @@
   width: 210mm;
   height: 297mm;
   margin: 20px auto;
-  padding: 3.3cm 2.7cm 3.1cm 2.7cm;
+  padding: 2.54cm;
   background: #fff;
   box-shadow: 0 0 8px #ccc;
   box-sizing: border-box;
@@ -154,6 +154,29 @@
   word-wrap: break-word;
   box-sizing: border-box;
 }
+.col-resize-handle {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 1;
+}
+.col-resize-handle:hover,
+.col-resize-handle.active {
+  background: #2d8cf0;
+}
+
+@media screen {
+  .fill-input:focus,
+  .fill-input-cell:focus {
+    background: #e8f0fe;
+    outline: 2px solid #2d8cf0;
+    outline-offset: -1px;
+  }
+}
+
 .signature-cell {
   position: relative;
 }

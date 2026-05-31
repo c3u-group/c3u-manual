@@ -3,12 +3,34 @@ function resize(el) {
   el.style.height = el.scrollHeight + 'px';
 }
 
+/* 表单内方向键不触发侧边栏翻页 */
+document.addEventListener('keydown', function(e) {
+  var tag = (e.target.tagName || '').toLowerCase();
+  if ((tag === 'textarea' || tag === 'input') &&
+      (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+}, true);
+
 (function() {
   var els = document.querySelectorAll('.fill-input, .fill-input-cell');
   for (var i = 0; i < els.length; i++) {
     els[i].addEventListener('input', function() { resize(this); });
     resize(els[i]);
   }
+})();
+
+/* 点击单元格任意位置即聚焦输入框 */
+(function() {
+  document.addEventListener('click', function(e) {
+    var td = e.target.closest('td');
+    if (!td) return;
+    var input = td.querySelector('.fill-input-cell, .fill-input, input[type="text"]');
+    if (input && e.target !== input) {
+      input.focus();
+    }
+  });
 })();
 
 (function() {
@@ -130,5 +152,50 @@ function delRow(btn) {
   form.addEventListener('change', function() {
     clearTimeout(timer);
     timer = setTimeout(save, 300);
+  });
+})();
+
+/* ---- Column resize for apply-table ---- */
+(function() {
+  var table = document.getElementById('apply-table');
+  if (!table) return;
+
+  var headerCells = Array.from(
+    table.querySelectorAll('tr:first-child td.label:not([data-mat-label])')
+  ).slice(0, -1);  // 最后一列不拖拽
+  var handle, startX, startWidth, targetCell;
+
+  headerCells.forEach(function(cell) {
+    var handle = document.createElement('div');
+    handle.className = 'col-resize-handle';
+    cell.style.position = 'relative';
+    cell.appendChild(handle);
+
+    handle.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      targetCell = cell;
+      startX = e.pageX;
+      startWidth = cell.offsetWidth;
+      handle.classList.add('active');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+    });
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!targetCell) return;
+    var delta = e.pageX - startX;
+    var newWidth = Math.max(40, startWidth + delta);
+    targetCell.style.width = newWidth + 'px';
+    targetCell.style.minWidth = newWidth + 'px';
+  });
+
+  document.addEventListener('mouseup', function() {
+    if (!targetCell) return;
+    targetCell = null;
+    var handles = table.querySelectorAll('.col-resize-handle');
+    handles.forEach(function(h) { h.classList.remove('active'); });
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
   });
 })();
