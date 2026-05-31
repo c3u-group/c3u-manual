@@ -7,4 +7,4 @@
 - [安装](./install.md) — Windows 与 macOS/Linux 安装步骤
 - [配置](./config.md) — DeepSeek API 接入与验证
 
-安装完成后，进入下一章[快速上手](../02-quick-start/index.md)开始使用。
+如果不想逐章阅读，直接按[快速配置](../05-appendix/quick-config.md)一步步执行即可完成安装配置。

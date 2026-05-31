@@ -24,6 +24,7 @@
         - [CI/CD 集成](./softwares/Agent/claude-code/04-advanced/cicd.md)
       - [附录](./softwares/Agent/claude-code/05-appendix/index.md)
         - [参考信息](./softwares/Agent/claude-code/05-appendix/reference.md)
+        - [快速配置](./softwares/Agent/claude-code/05-appendix/quick-config.md)
         - [常见问题与故障排查](./softwares/Agent/claude-code/05-appendix/faq.md)
         - [使用示例](./softwares/Agent/claude-code/05-appendix/examples.md)
 
