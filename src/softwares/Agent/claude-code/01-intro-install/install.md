@@ -43,7 +43,7 @@ winget install OpenJS.NodeJS.LTS --accept-source-agreements
 
 ### Visual Studio Code 集成
 
-在 VSCode 扩展市场搜索安装 `Claude Code for VS Code`。安装后左侧出现 Claude Code 面板，可在编辑器内对话。右上角出现 Claude Code 图表，可打开新的 Claude Code 窗口。
+在 VSCode 扩展市场搜索安装 `Claude Code for VS Code`。安装后左侧出现 Claude Code 面板，可在编辑器内对话。右上角出现 Claude Code 图标，可打开新的 Claude Code 窗口。
 
 在 VSCode 扩展市场搜索安装 `Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code` 可安装简体中文语言包。重新打开 VSCode 可切换到简体中文。按 `Ctrl + Shift + P` 打开命令面板，输入 `>Configure Display Language` 可更改显示语言。
 
@@ -106,7 +106,7 @@ brew install --cask miniforge
 
 ### VSCode 集成
 
-在 VSCode 扩展市场搜索安装 `Claude Code for VS Code`。安装后左侧出现 Claude Code 面板，可在编辑器内对话。右上角出现 Claude Code 图表，可打开新的 Claude Code 窗口。
+在 VSCode 扩展市场搜索安装 `Claude Code for VS Code`。安装后左侧出现 Claude Code 面板，可在编辑器内对话。右上角出现 Claude Code 图标，可打开新的 Claude Code 窗口。
 
 在 VSCode 扩展市场搜索安装 `Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code` 可安装简体中文语言包。重新打开 VSCode 可切换到简体中文。按 `Cmd + Shift + P` 打开命令面板，输入 `>Configure Display Language` 可更改显示语言。
 

@@ -63,12 +63,12 @@
       <td colspan="6"></td>
     </tr>
     <tr>
-      <td class="label">拟报销经费<br/>(财务老师填写)</td>
-      <td colspan="6">（如需填写）</td>
+      <td class="label">拟报销经费<br class="no-print"/>(财务老师填写)</td>
+      <td colspan="6"><span class="no-print">（如需填写）</span></td>
     </tr>
     <tr>
       <td class="label">经费负责人意见</td>
-      <td colspan="6">（如需填写）</td>
+      <td colspan="6"><span class="no-print">（如需填写）</span></td>
     </tr>
     <tr>
       <td class="label">团队负责人意见<br/>(单批次≥3000元)</td>
