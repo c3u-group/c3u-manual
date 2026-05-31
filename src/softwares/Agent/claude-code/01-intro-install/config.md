@@ -8,27 +8,29 @@
 
 ## Windows
 
+Claude Code 首次启动会要求登录 Anthropic 账号。使用 DeepSeek API 时无需登录，通过配置文件跳过即可。
+
 ```powershell
 $env:DEEPSEEK_API_KEY='你的API_KEY'
 [Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", $env:DEEPSEEK_API_KEY, "User")
 
-# 跳过登录
+# Claude Code 默认要求登录 Anthropic 账号，此文件跳过该步骤
 @{ hasCompletedOnboarding = $true } | ConvertTo-Json | Out-File $env:USERPROFILE\.claude.json -Encoding UTF8
 
-# 创建设置文件
+# 创建配置文件，将 Claude Code 指向 DeepSeek API
 New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
 @{
     env = @{
-        ANTHROPIC_AUTH_TOKEN = $env:DEEPSEEK_API_KEY
-        ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic"
-        ANTHROPIC_MODEL = "deepseek-v4-pro[1m]"
-        ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash"
-        ANTHROPIC_DEFAULT_SONNET_MODEL = "deepseek-v4-pro"
-        ANTHROPIC_DEFAULT_OPUS_MODEL = "deepseek-v4-pro"
-        CLAUDE_CODE_SUBAGENT_MODEL = "deepseek-v4-pro"
-        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"
-        CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK = "1"
-        CLAUDE_CODE_EFFORT_LEVEL = "max"
+        ANTHROPIC_AUTH_TOKEN = $env:DEEPSEEK_API_KEY         # API 密钥
+        ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic"  # 将请求发往 DeepSeek
+        ANTHROPIC_MODEL = "deepseek-v4-pro[1m]"               # 默认模型
+        ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash"   # 轻量任务模型
+        ANTHROPIC_DEFAULT_SONNET_MODEL = "deepseek-v4-pro"    # 中等任务模型
+        ANTHROPIC_DEFAULT_OPUS_MODEL = "deepseek-v4-pro"      # 复杂任务模型
+        CLAUDE_CODE_SUBAGENT_MODEL = "deepseek-v4-pro"        # Subagent 模型
+        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"   # 禁用非必要网络请求
+        CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK = "1"  # 禁用非流式回退
+        CLAUDE_CODE_EFFORT_LEVEL = "max"                 # 推理深度设为最高
     }
 } | ConvertTo-Json | Out-File $env:USERPROFILE\.claude\settings.json -Encoding UTF8
 ```
@@ -38,10 +40,11 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
 ```bash
 DEEPSEEK_API_KEY='你的API_KEY'
 
-# 跳过登录
+# Claude Code 默认要求登录 Anthropic 账号，此文件跳过该步骤
 echo '{"hasCompletedOnboarding": true}' > ~/.claude.json
 
-# 创建设置文件
+# 创建配置文件，将 Claude Code 指向 DeepSeek API
+# 各字段说明见下方注释，JSON 不支持行内注释，请勿在配置内添加 # 号
 mkdir -p ~/.claude
 cat > ~/.claude/settings.json << EOF
 {
@@ -60,6 +63,21 @@ cat > ~/.claude/settings.json << EOF
 }
 EOF
 ```
+
+各字段含义：
+
+| 字段 | 含义 |
+|------|------|
+| `ANTHROPIC_AUTH_TOKEN` | API 密钥 |
+| `ANTHROPIC_BASE_URL` | API 请求地址，此处指向 DeepSeek |
+| `ANTHROPIC_MODEL` | 默认主模型，`[1m]` 表示启用 1M token 上下文窗口 |
+| `ANTHROPIC_DEFAULT_HAIKU_MODEL` | 轻量任务模型（如文件搜索、格式检查） |
+| `ANTHROPIC_DEFAULT_SONNET_MODEL` | 中等任务模型 |
+| `ANTHROPIC_DEFAULT_OPUS_MODEL` | 复杂任务模型（深度推理、多步规划） |
+| `CLAUDE_CODE_SUBAGENT_MODEL` | Subagent 默认模型 |
+| `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | 禁用非必要网络请求（如版本检查） |
+| `CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK` | 禁用非流式回退 |
+| `CLAUDE_CODE_EFFORT_LEVEL` | 推理深度（`max` 为最高） |
 
 ## 验证
 

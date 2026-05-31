@@ -52,5 +52,5 @@ Security: no secrets in commits; use env vars.
 ## 编写要点
 
 - 每行问自己：删掉这行，AI 会犯错吗？不会就删
-- 控制在 ~200 行以内，过长的用 `@import` 拆到 `.claude/rules/` 下
+- 控制在 ~200 行以内，内容过多时可拆分为多个文件放到 `.claude/rules/`，用 `@import` 引入
 - 用 `/init` 起步，再手动调整

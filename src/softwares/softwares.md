@@ -5,7 +5,7 @@
 - [Agent 工具](./Agent/index.md) — AI 编程助手与智能办公工具
   - [Claude Code](./Agent/claude-code/intro.md) — 命令行 AI 编程助手，读写文件、执行命令、操作 Git
     - [介绍与安装](./Agent/claude-code/01-intro-install/index.md) — 功能概览、环境搭建与 API 配置
-    - [快速上手](./Agent/claude-code/02-quick-start/index.md) — 启动、`/plan` 初体验、常用命令与 Prompt 技巧
+    - [快速上手](./Agent/claude-code/02-quick-start/index.md) — 启动、`/plan` 初体验与常用命令
     - [进阶指南](./Agent/claude-code/03-advanced-guide/index.md) — CLAUDE.md 配置、Git 协同、工具与扩展、权限安全
     - [高级用法](./Agent/claude-code/04-advanced/index.md) — 插件开发、Subagent 编排、Hooks 进阶、MCP Server、CI/CD
     - [附录](./Agent/claude-code/05-appendix/index.md) — 速查参考、常见问题、完整示例、故障排查、模型对照

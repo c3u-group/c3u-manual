@@ -30,7 +30,7 @@ secrets/
 
 ## Secrets 拦截
 
-Claude Code 内置 secrets 检测，会自动阻止向外部发送疑似 API key、密码、token 等内容。不要将涉密数据、内部数据集放入 AI 可读的目录。
+Claude Code 内置 secrets 检测，会自动阻止向外部发送疑似 API key、密码、token 等内容。`~/.claude/settings.json` 中的 Key 为本地环境变量注入，不经过对话内容，不受此限制。拦截针对的是对话中输入或代码中硬编码的 Key。不要将涉密数据、内部数据集放入 AI 可读的目录。
 
 ## 第三方 Skill
 
