@@ -1,7 +1,5 @@
 # 配置
 
-[Windows](#windows) · [macOS / Linux](#macos--linux)
-
 ## 获取 DeepSeek API Key
 
 前往 [DeepSeek 开放平台](https://platform.deepseek.com)，注册、实名认证、充值后创建 API Key，复制备用。

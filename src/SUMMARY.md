@@ -24,9 +24,9 @@
         - [CI/CD 集成](./softwares/Agent/claude-code/04-advanced/cicd.md)
       - [附录](./softwares/Agent/claude-code/05-appendix/index.md)
         - [参考信息](./softwares/Agent/claude-code/05-appendix/reference.md)
-        - [常见问题](./softwares/Agent/claude-code/05-appendix/faq.md)
+        - [常见问题与故障排查](./softwares/Agent/claude-code/05-appendix/faq.md)
         - [使用示例](./softwares/Agent/claude-code/05-appendix/examples.md)
-        - [故障排查](./softwares/Agent/claude-code/05-appendix/troubleshooting.md)
+
         - [模型与成本速查](./softwares/Agent/claude-code/05-appendix/model-reference.md)
         - [Plugin 指南](./softwares/Agent/claude-code/05-appendix/plugins/index.md)
           - [Academic Research Skills](./softwares/Agent/claude-code/05-appendix/plugins/ars-guide.md)

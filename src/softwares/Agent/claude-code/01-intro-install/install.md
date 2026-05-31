@@ -1,7 +1,5 @@
 # 安装
 
-[Windows](#windows) · [macOS / Linux](#macos--linux)
-
 ## Windows
 
 ### 安装 Claude Code
