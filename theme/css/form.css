@@ -53,6 +53,7 @@
   background: #fff;
   box-shadow: 0 0 8px #ccc;
   box-sizing: border-box;
+  font-family: "FangSong_GB2312", "STFangsong", "FangSong", "仿宋", "Noto Serif CJK SC", serif;
   font-size: 14px;
   display: flex;
   flex-direction: column;
