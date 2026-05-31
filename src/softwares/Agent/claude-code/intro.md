@@ -1,4 +1,4 @@
-# Agent 工具
+# Claude Code
 
 Claude Code 是命令行 AI 编程助手，能读写文件、执行命令、操作 Git，适合科研数据处理、代码开发和文档编写。
 

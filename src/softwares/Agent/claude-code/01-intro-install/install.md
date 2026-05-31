@@ -71,18 +71,12 @@ export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
-echo >> ~/.bashrc
-echo '# Set non-default Git remotes for Homebrew/brew and Homebrew/homebrew-core.' >> ~/.bashrc
-echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"' >> ~/.bashrc
-echo 'export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"' >> ~/.bashrc
-echo 'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"' >> ~/.bash_profile
-echo 'export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"' >> ~/.bash_profile
 
 # 安装 Homebrew
 /bin/bash -c "$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)"
 ```
 
-安装完成后，按屏幕提示完成后续配置（添加环境变量、安装依赖等），macOS 与 Linux 的步骤不同，照终端显示的做即可。
+安装完成后，按屏幕提示完成后续配置。Linux 还需额外安装编译依赖（如 `sudo dnf group install development-tools`），照终端提示做即可。
 
 ### 安装 Claude Code
 
@@ -100,7 +94,7 @@ brew upgrade claude-code
 
 ### 可选：安装常用软件
 
-（推荐）安装 Visual Studio Code ：
+安装 Visual Studio Code ：
 ```bash
 brew install --cask visual-studio-code
 ```

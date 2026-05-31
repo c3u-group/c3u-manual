@@ -33,7 +33,7 @@ MCP（Model Context Protocol）让 Claude Code 连接到外部服务：数据库
 
 ### 推荐 MCP
 
-**[Tavily MCP](https://tavily.com/mcp)** — 联网搜索与网页抓取，支持研究级深度检索。安装方式参考 Tavily 文档，或直接跟 Claude 说"帮我安装 Tavily MCP"。
+**[Tavily MCP](https://www.tavily.com/)** — 联网搜索与网页抓取，支持研究级深度检索。安装方式参考 Tavily 文档，或直接跟 Claude 说"帮我安装 Tavily MCP"。
 
 其他 MCP server 安装方式类似，一般在 `.claude/mcp.json` 中配置。
 
@@ -41,7 +41,7 @@ MCP（Model Context Protocol）让 Claude Code 连接到外部服务：数据库
 
 Hooks 在特定事件时自动触发脚本。在 `.claude/settings.json` 中配置。
 
-**示例** — 需要用户关注时弹窗通知：
+**示例** — 需要用户关注时弹窗通知（Windows）：
 
 ```json
 {
