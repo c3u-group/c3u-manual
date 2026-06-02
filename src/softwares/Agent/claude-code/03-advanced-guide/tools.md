@@ -38,6 +38,20 @@ AI 在需要外部信息时会自动发起搜索，也可以显式要求：
 
 Skills 是按需加载的专业能力模块，在 `.claude/skills/<skill名>/SKILL.md` 下编写。AI 在匹配任务时自动调用，也可手动 `/skillname`。不会写可以让 Claude 帮忙。
 
+修改 skill 文件后，用 `/reload-skills` 重新扫描 skill 目录，无需重启会话（v2.1.152 起 session 内编辑自动生效）。
+
+Skill 的前置元数据可设置 `disallowed-tools`，在该 skill 激活期间禁用特定工具：
+
+```markdown
+---
+name: tg-processing
+description: Process TGA data, plot TG/DTG curves, extract characteristic temperatures
+disallowed-tools: [Bash(rm *), Write(*.env)]
+---
+```
+
+适合在 skill 中锁定高风险操作，防止 AI 在特定工作流中越权。
+
 例如创建 `.claude/skills/tg-processing/SKILL.md`：
 
 ```markdown

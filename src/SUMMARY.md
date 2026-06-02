@@ -29,6 +29,7 @@
         - [使用示例](./softwares/Agent/claude-code/05-appendix/examples.md)
 
         - [模型与成本速查](./softwares/Agent/claude-code/05-appendix/model-reference.md)
+        - [Anthropic 专有功能](./softwares/Agent/claude-code/05-appendix/new-features.md)
         - [Plugin 指南](./softwares/Agent/claude-code/05-appendix/plugins/index.md)
           - [Academic Research Skills](./softwares/Agent/claude-code/05-appendix/plugins/ars-guide.md)
           - [Superpowers](./softwares/Agent/claude-code/05-appendix/plugins/superpowers-guide.md)
