@@ -11,7 +11,7 @@ winget install Anthropic.ClaudeCode --accept-source-agreements
 winget install Git.Git --accept-source-agreements
 winget install Microsoft.VisualStudioCode --accept-source-agreements
 winget install Python.Python.3.12 --accept-source-agreements
-winget install CondaForge.Miniforge --accept-source-agreements
+winget install --id JohnMacFarlane.Pandoc --accept-source-agreements
 ```
 
 ## 2. 获取 API Key

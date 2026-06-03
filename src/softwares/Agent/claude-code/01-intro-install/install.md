@@ -23,9 +23,9 @@ winget install Microsoft.VisualStudioCode --accept-source-agreements
 winget install Python.Python.3.12 --accept-source-agreements
 ```
 
-安装 Conda ：
+安装 Pandoc（文档格式转换，学术写作常用）：
 ```powershell
-winget install CondaForge.Miniforge --accept-source-agreements
+winget install --id JohnMacFarlane.Pandoc --accept-source-agreements
 ```
 
 ### Visual Studio Code 集成
@@ -96,9 +96,9 @@ brew install git
 brew install python
 ```
 
-安装 Conda ：
+安装 Pandoc（文档格式转换，学术写作常用）：
 ```bash
-brew install --cask miniforge
+brew install pandoc
 ```
 
 ### VSCode 集成
