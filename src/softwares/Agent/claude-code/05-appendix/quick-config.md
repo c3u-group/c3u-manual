@@ -80,12 +80,58 @@ VSCode 插件除上述终端配置外，还需在设置中禁用登录提示：
 export HTTPS_PROXY=http://127.0.0.1:7890
 ```
 
+### pyright-lsp
+
+Python LSP 支持，提供代码智能（类型提示、跳转定义、查找引用）：
+
 ```bash
 pip install pyright
 claude plugin install pyright-lsp
+```
+
+### superpowers
+
+14 个工程规范 skill，覆盖开发全流程：
+
+```bash
 claude plugin install superpowers
+```
+
+### andrej-karpathy-skills
+
+Karpathy 四条编码原则（先想再写、简洁优先、精准修改、目标驱动）：
+
+```bash
 claude plugin marketplace add forrestchang/andrej-karpathy-skills
 claude plugin install andrej-karpathy-skills@karpathy-skills
+```
+
+### academic-research-skills
+
+学术研究全流程（文献调研、论文撰写、同行评审、pipeline 编排）：
+
+```bash
 claude plugin marketplace add Imbad0202/academic-research-skills
 claude plugin install academic-research-skills
+```
+
+### zwzdcc-plugins
+
+自用 plugin 集合，含学术文献精读、写作检查、方案推敲、Scopus 检索：
+
+```bash
+claude plugin marketplace add Zxzz106/zwzdcc-plugins
+claude plugin install scopus-api@zwzdcc-plugins
+```
+
+scopus-api 依赖 uv，需 Scopus API Key：前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建，然后设置环境变量：
+
+```powershell
+[Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "你的API_KEY", "User")
+```
+
+首次使用前预热 uv 缓存：
+
+```bash
+claude -p --permission-mode bypassPermissions 'Warm uv cache for scopus-api@zwzdcc-plugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/mcp_server.py --test'
 ```

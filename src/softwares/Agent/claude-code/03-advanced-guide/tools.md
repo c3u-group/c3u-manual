@@ -188,4 +188,13 @@ claude plugin install academic-research-skills
 | academic-paper-reviewer | 7 Agent，6 模式：主编 + 3 审稿人 + 魔鬼代言人，0-100 品质量表 |
 | academic-pipeline | 10 阶段全流程：调研→撰写→审查→修订→再审→定稿 |
 
+### zwzdcc-plugins
+
+自用 plugin 集合，详细用法见 [附录](../05-appendix/plugins/zwzdcc-guide.md)。
+
+添加仓库：
+```bash
+claude plugin marketplace add Zxzz106/zwzdcc-plugins
+```
+
 以上覆盖的是安装和使用现成的 Plugin。若需要自己开发 Plugin，见[插件开发](../04-advanced/plugins.md)。
