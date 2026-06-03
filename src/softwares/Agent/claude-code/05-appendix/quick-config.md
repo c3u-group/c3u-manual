@@ -15,11 +15,20 @@ winget install --id Astral.uv --accept-source-agreements
 winget install --id JohnMacFarlane.Pandoc --accept-source-agreements
 ```
 
-## 2. 获取 API Key
+## 2. 配置 Git
+
+关闭终端重新打开，执行（替换为自己的姓名和邮箱）：
+
+```powershell
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+## 3. 获取 API Key
 
 前往 [DeepSeek 开放平台](https://platform.deepseek.com)，注册、实名认证、充值后创建 API Key，复制备用。
 
-## 3. 配置 API
+## 4. 配置 API
 
 在 PowerShell 中执行：
 
@@ -52,18 +61,18 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
 } | ConvertTo-Json | Out-File $env:USERPROFILE\.claude\settings.json -Encoding UTF8
 ```
 
-## 4. VSCode 跳过登录
+## 5. VSCode 跳过登录
 
 VSCode 插件除上述终端配置外，还需在设置中禁用登录提示：
 
 1. 右下角齿轮 → 设置，或 `Ctrl + ,`
 2. 搜索 `claudeCode.disableLoginPrompt`，勾选启用
 
-## 5. 启动
+## 6. 启动
 
 关闭终端重新打开，在项目目录下输入 `claude` 即可启动。
 
-## 6. 安装推荐 Plugin
+## 7. 安装推荐 Plugin
 
 启动后在 Claude Code 中依次执行。如 GitHub 连接不稳定，先设置代理：
 
