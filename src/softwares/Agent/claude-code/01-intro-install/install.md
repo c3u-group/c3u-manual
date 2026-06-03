@@ -23,6 +23,11 @@ winget install Microsoft.VisualStudioCode --accept-source-agreements
 winget install Python.Python.3.12 --accept-source-agreements
 ```
 
+安装 uv（Python 包管理器，替代 pip）：
+```powershell
+winget install --id Astral.uv --accept-source-agreements
+```
+
 安装 Pandoc（文档格式转换，学术写作常用）：
 ```powershell
 winget install --id JohnMacFarlane.Pandoc --accept-source-agreements
@@ -94,6 +99,11 @@ brew install git
 安装 Python ：
 ```bash
 brew install python
+```
+
+安装 uv（Python 包管理器，替代 pip）：
+```bash
+brew install uv
 ```
 
 安装 Pandoc（文档格式转换，学术写作常用）：
