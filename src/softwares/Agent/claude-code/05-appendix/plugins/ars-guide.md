@@ -13,6 +13,14 @@ claude plugin install academic-research-skills
 > macOS / Linux：`export HTTPS_PROXY=http://127.0.0.1:7890`
 > Windows：`$env:HTTPS_PROXY=http://127.0.0.1:7890`
 
+## 使用建议
+
+使用 ARS 前建议将 Claude Code 推理深度调至最高，启用 workflow 级并发：
+
+```bash
+/effort ultracode
+```
+
 ## 四个 Skill
 
 ### deep-research — 文献调研
@@ -90,6 +98,12 @@ Pipeline 结束自动产出**过程记录**与 6 维度协作质量评估。
 | `/ars-full` | 完整论文 |
 | `/ars-abstract` | 双语摘要 + 关键词 |
 
+**审查**
+
+| 命令 | 作用 |
+|------|------|
+| `/ars-reviewer` | 模拟同行评审：主编 + 3 审稿人 + 魔鬼代言人（自动调用 Opus） |
+
 **修订**
 
 | 命令 | 作用 |
@@ -99,19 +113,6 @@ Pipeline 结束自动产出**过程记录**与 6 维度协作质量评估。
 | `/ars-citation-check` | 引用完整性检查 |
 | `/ars-format-convert` | 格式转换：LaTeX / DOCX / PDF / Markdown |
 | `/ars-disclosure` | 生成期刊特异的 AI 使用声明 |
-
-**审查**
-
-| 命令 | 作用 |
-|------|------|
-| `/ars-reviewer` | 模拟同行评审：主编 + 3 审稿人 + 魔鬼代言人（自动调用 Opus） |
-
-**管理**
-
-| 命令 | 作用 |
-|------|------|
-| `/ars-mark-read` | 标记已读文献 |
-| `/ars-unmark-read` | 撤销已读标记 |
 
 ## 核心特性
 
