@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-claude plugin marketplace add Zxzz106/zwzdcc-plugins
+claude plugin marketplace add https://github.com/Zxzz106/zwzdcc-plugins
 claude plugin install mineru-2md@zwzdcc-plugins
 claude plugin install scopus-api@zwzdcc-plugins
 claude plugin install academic-writing-check@zwzdcc-plugins

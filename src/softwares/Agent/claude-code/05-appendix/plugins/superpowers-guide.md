@@ -5,7 +5,7 @@ Superpowers 是 Claude Code 核心贡献者 Jesse Vincent 开发的 14 个工程
 ## 安装
 
 ```bash
-claude plugin marketplace add anthropics/claude-plugins-official
+claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
 claude plugin install superpowers
 ```
 

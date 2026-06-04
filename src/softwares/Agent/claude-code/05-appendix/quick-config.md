@@ -101,7 +101,7 @@ claude plugin install pyright-lsp
 14 个工程规范 skill，覆盖开发全流程。详细用法见 [插件指南](./plugins/superpowers-guide.md)：
 
 ```bash
-claude plugin marketplace add anthropics/claude-plugins-official
+claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
 claude plugin install superpowers
 ```
 
@@ -110,7 +110,7 @@ claude plugin install superpowers
 Karpathy 四条编码原则（先想再写、简洁优先、精准修改、目标驱动）。详细用法见 [插件指南](./plugins/karpathy-guide.md)：
 
 ```bash
-claude plugin marketplace add forrestchang/andrej-karpathy-skills
+claude plugin marketplace add https://github.com/forrestchang/andrej-karpathy-skills
 claude plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
@@ -119,7 +119,7 @@ claude plugin install andrej-karpathy-skills@karpathy-skills
 学术研究全流程（文献调研、论文撰写、同行评审、修订）。详细用法见 [插件指南](./plugins/ars-guide.md)：
 
 ```bash
-claude plugin marketplace add Imbad0202/academic-research-skills
+claude plugin marketplace add https://github.com/Imbad0202/academic-research-skills
 claude plugin install academic-research-skills
 ```
 
@@ -128,7 +128,7 @@ claude plugin install academic-research-skills
 自用 plugin 集合，含文档转换、Scopus 检索、写作检查、方案推敲与文献精读。详细用法见 [插件指南](./plugins/zwzdcc-guide.md)：
 
 ```bash
-claude plugin marketplace add Zxzz106/zwzdcc-plugins
+claude plugin marketplace add https://github.com/Zxzz106/zwzdcc-plugins
 claude plugin install mineru-2md@zwzdcc-plugins
 claude plugin install scopus-api@zwzdcc-plugins
 claude plugin install academic-writing-check@zwzdcc-plugins

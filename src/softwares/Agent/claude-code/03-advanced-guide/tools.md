@@ -130,7 +130,7 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `claude 
 
 添加官方仓库并安装插件：
 ```bash
-claude plugin marketplace add anthropics/claude-plugins-official
+claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
 claude plugin install superpowers
 ```
 
@@ -153,7 +153,7 @@ Karpathy 提出的四条编码纪律，遏制 AI 常见顽疾。详细说明见 
 
 添加仓库：
 ```bash
-claude plugin marketplace add forrestchang/andrej-karpathy-skills
+claude plugin marketplace add https://github.com/forrestchang/andrej-karpathy-skills
 ```
 
 安装插件：
@@ -174,7 +174,7 @@ claude plugin install andrej-karpathy-skills@karpathy-skills
 
 添加仓库：
 ```bash
-claude plugin marketplace add Imbad0202/academic-research-skills
+claude plugin marketplace add https://github.com/Imbad0202/academic-research-skills
 ```
 
 安装插件：
@@ -195,7 +195,7 @@ claude plugin install academic-research-skills
 
 添加仓库：
 ```bash
-claude plugin marketplace add Zxzz106/zwzdcc-plugins
+claude plugin marketplace add https://github.com/Zxzz106/zwzdcc-plugins
 ```
 
 | Plugin | 用途 |
