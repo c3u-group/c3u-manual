@@ -7,12 +7,12 @@
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
-winget install Anthropic.ClaudeCode --accept-source-agreements
-winget install Git.Git --accept-source-agreements
-winget install Microsoft.VisualStudioCode --accept-source-agreements
-winget install Python.Python.3.12 --accept-source-agreements
-winget install --id Astral.uv --accept-source-agreements
-winget install --id JohnMacFarlane.Pandoc --accept-source-agreements
+winget install Anthropic.ClaudeCode
+winget install Git.Git
+winget install Microsoft.VisualStudioCode
+winget install Python.Python.3.12
+winget install astral-sh.uv
+winget install pandoc
 ```
 
 ## 2. 配置 Git
@@ -61,18 +61,25 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
 } | ConvertTo-Json | Out-File $env:USERPROFILE\.claude\settings.json -Encoding UTF8
 ```
 
-## 5. VSCode 跳过登录
+## 5. VSCode 插件
 
-VSCode 插件除上述终端配置外，还需在设置中禁用登录提示：
+打开 VSCode，在扩展市场（`Ctrl + Shift + X`）搜索安装：
+
+- `Claude Code for VS Code` — 在编辑器内使用 Claude Code
+- `Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code` — 简体中文界面
+
+## 6. VSCode 跳过登录
+
+VSCode 插件需在设置中禁用登录提示：
 
 1. 右下角齿轮 → 设置，或 `Ctrl + ,`
 2. 搜索 `claudeCode.disableLoginPrompt`，勾选启用
 
-## 6. 启动
+## 7. 启动
 
 关闭终端重新打开，在项目目录下输入 `claude` 即可启动。
 
-## 7. 安装推荐 Plugin
+## 8. 安装推荐 Plugin
 
 启动后在 Claude Code 中依次执行。如 GitHub 连接不稳定，先设置代理：
 
@@ -94,6 +101,7 @@ claude plugin install pyright-lsp
 14 个工程规范 skill，覆盖开发全流程：
 
 ```bash
+claude plugin marketplace add anthropics/claude-plugins-official
 claude plugin install superpowers
 ```
 

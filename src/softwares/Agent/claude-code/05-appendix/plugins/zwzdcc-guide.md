@@ -4,12 +4,12 @@
 
 ## 安装
 
-```text
-/plugin marketplace add Zxzz106/zwzdcc-plugins
-/plugin install intensive-reading@zwzdcc-plugins
-/plugin install academic-writing-check@zwzdcc-plugins
-/plugin install grill-me@zwzdcc-plugins
-/plugin install scopus-api@zwzdcc-plugins
+```bash
+claude plugin marketplace add Zxzz106/zwzdcc-plugins
+claude plugin install intensive-reading@zwzdcc-plugins
+claude plugin install academic-writing-check@zwzdcc-plugins
+claude plugin install grill-me@zwzdcc-plugins
+claude plugin install scopus-api@zwzdcc-plugins
 ```
 
 > GitHub 访问可能不稳定，如安装失败，先设置代理：

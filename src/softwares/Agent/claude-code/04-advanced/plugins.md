@@ -112,9 +112,9 @@ claude plugin add --path ./my-plugin
 
 推送到 GitHub 仓库，在 Releases 页面创建版本。其他人通过以下方式安装：
 
-```text
-/plugin marketplace add github.com/user/repo
-/plugin install repo
+```bash
+claude plugin marketplace add github.com/user/repo
+claude plugin install repo
 ```
 
 ## 注意

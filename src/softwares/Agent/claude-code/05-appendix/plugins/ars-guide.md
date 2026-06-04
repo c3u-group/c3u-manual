@@ -4,9 +4,9 @@ ARS 是一套 Claude Code 学术研究技能包，覆盖从文献调研到论文
 
 ## 安装
 
-```text
-/plugin marketplace add Imbad0202/academic-research-skills
-/plugin install academic-research-skills
+```bash
+claude plugin marketplace add Imbad0202/academic-research-skills
+claude plugin install academic-research-skills
 ```
 
 > GitHub 访问可能不稳定，如安装失败，先设置代理：

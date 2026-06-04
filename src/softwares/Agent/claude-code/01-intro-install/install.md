@@ -7,31 +7,27 @@
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
-winget install Anthropic.ClaudeCode --accept-source-agreements
-winget install Git.Git --accept-source-agreements
+winget install Anthropic.ClaudeCode
+winget install Git.Git
 ```
 
 ### 推荐：安装常用软件
 
 安装 Visual Studio Code ：
 ```powershell
-winget install Microsoft.VisualStudioCode --accept-source-agreements
-```
+winget install Microsoft.VisualStudioCode```
 
 安装 Python ：
 ```powershell
-winget install Python.Python.3.12 --accept-source-agreements
-```
+winget install Python.Python.3.12```
 
 安装 uv（Python 包管理器，替代 pip）：
 ```powershell
-winget install --id Astral.uv --accept-source-agreements
-```
+winget install astral-sh.uv```
 
 安装 Pandoc（文档格式转换，学术写作常用）：
 ```powershell
-winget install --id JohnMacFarlane.Pandoc --accept-source-agreements
-```
+winget install pandoc```
 
 ### Visual Studio Code 集成
 

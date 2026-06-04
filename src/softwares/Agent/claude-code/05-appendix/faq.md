@@ -68,5 +68,5 @@ winget install Anthropic.ClaudeCode --accept-source-agreements
 ### Claude Code 更新后行为异常
 
 1. 检查 `~/.claude/settings.json` 是否与新版本兼容
-2. 检查已安装插件是否有更新：`/plugin`
+2. 检查已安装插件是否有更新：`claude plugin update`
 3. 清理并重新安装：卸载 → 重装
