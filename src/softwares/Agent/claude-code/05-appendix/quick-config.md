@@ -125,24 +125,23 @@ claude plugin install academic-research-skills
 
 ### zwzdcc-plugins
 
-自用 plugin 集合，含文档转换、Scopus 检索、写作检查、方案推敲与文献精读。详细用法见 [插件指南](./plugins/zwzdcc-guide.md)：
+自用 plugin 集合，按功能域划分为文献检索、文献加工、输出审查与文档转换 4 个 plugin。详细用法见 [插件指南](./plugins/zwzdcc-guide.md)：
 
 ```bash
 claude plugin marketplace add https://github.com/Zxzz106/zwzdcc-plugins
-claude plugin install mineru-2md@zwzdcc-plugins
-claude plugin install scopus-api@zwzdcc-plugins
-claude plugin install academic-writing-check@zwzdcc-plugins
-claude plugin install grill-me@zwzdcc-plugins
-claude plugin install intensive-reading@zwzdcc-plugins
+claude plugin install literature-retrieval@zwzdcc-plugins
+claude plugin install literature-processing@zwzdcc-plugins
+claude plugin install critique@zwzdcc-plugins
+claude plugin install file-converter@zwzdcc-plugins
 ```
 
-mineru-2md 依赖 uv，需 MinerU API Key：前往 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建，然后设置环境变量：
+file-converter 依赖 uv，需 MinerU API Key：前往 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建，然后设置环境变量：
 
 ```powershell
 [Environment]::SetEnvironmentVariable("MINERU_API_KEY", "你的API_KEY", "User")
 ```
 
-scopus-api 依赖 uv，需 Scopus API Key：前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建，然后设置环境变量：
+literature-retrieval 依赖 uv，需 Scopus API Key（超星仅需机构 IP，无需密钥）：前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建 Scopus API Key，然后设置环境变量：
 
 ```powershell
 [Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "你的API_KEY", "User")
@@ -151,6 +150,6 @@ scopus-api 依赖 uv，需 Scopus API Key：前往 [Elsevier Developer Portal](h
 首次使用前预热 uv 缓存：
 
 ```bash
-claude -p --permission-mode bypassPermissions 'Warm uv cache for mineru-2md@zwzdcc-plugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/mcp_server.py --test'
-claude -p --permission-mode bypassPermissions 'Warm uv cache for scopus-api@zwzdcc-plugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/mcp_server.py --test'
+claude -p --permission-mode bypassPermissions 'Warm uv cache for literature-retrieval@zwzdcc-plugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/chaoxing/mcp_server.py --test && uv run ${CLAUDE_PLUGIN_ROOT}/servers/scopus/mcp_server.py --test'
+claude -p --permission-mode bypassPermissions 'Warm uv cache for file-converter@zwzdcc-plugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/mcp_server.py --test'
 ```

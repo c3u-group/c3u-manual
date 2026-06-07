@@ -191,7 +191,7 @@ claude plugin install academic-research-skills
 
 ### zwzdcc-plugins
 
-自用 plugin 集合，含文档转换、Scopus 检索、写作检查、方案推敲与文献精读。详细用法见 [附录](../05-appendix/plugins/zwzdcc-guide.md)。
+自用 plugin 集合，按功能域划分为 4 个 plugin：文献检索、文献加工、输出审查与文档转换。详细用法见 [附录](../05-appendix/plugins/zwzdcc-guide.md)。
 
 添加仓库：
 ```bash
@@ -200,10 +200,9 @@ claude plugin marketplace add https://github.com/Zxzz106/zwzdcc-plugins
 
 | Plugin | 用途 |
 |--------|------|
-| mineru-2md | 文档转 Markdown MCP（MinerU API v4） |
-| scopus-api | Scopus 文献检索 MCP（7 tools） |
-| academic-writing-check | 学术写作常见问题检查 |
-| grill-me | 方案推敲，Socratic 式追问 |
-| intensive-reading | 七阶段论文精读标注，分层中文标注，输出 .md + .html |
+| literature-retrieval | 文献检索 MCP：Scopus（英） + 超星（中），含引用查询、RIS 导出、全文下载 |
+| literature-processing | 七阶段论文精读标注 + 段落级中英双语翻译，输出 .md + .html |
+| critique | 方案推敲（Socratic 追问） + AI 写作审查（18 项检查） |
+| file-converter | 文档转 Markdown MCP（MinerU API v4），支持 PDF/DOCX/PPTX/XLSX/图片/HTML |
 
 以上覆盖的是安装和使用现成的 Plugin。若需要自己开发 Plugin，见[插件开发](../04-advanced/plugins.md)。
