@@ -136,7 +136,7 @@ claude plugin install grill-me@zwzdcc-plugins
 claude plugin install intensive-reading@zwzdcc-plugins
 ```
 
-mineru-2md 依赖 uv，需 MinerU API Key：
+mineru-2md 依赖 uv，需 MinerU API Key：前往 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建，然后设置环境变量：
 
 ```powershell
 [Environment]::SetEnvironmentVariable("MINERU_API_KEY", "你的API_KEY", "User")

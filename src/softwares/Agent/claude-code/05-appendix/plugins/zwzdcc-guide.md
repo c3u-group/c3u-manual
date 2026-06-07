@@ -23,7 +23,7 @@ claude plugin install intensive-reading@zwzdcc-plugins
 
 基于 MinerU API v4 的 MCP 工具集，将文档转换为 Markdown。支持 PDF、DOCX、PPTX、XLSX、图片、HTML 等格式。异步两步流程：上传返回 `batch_id`，轮询下载结果。
 
-需在系统环境变量中配置 `MINERU_API_KEY`：
+需在 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建 API Key，并在系统环境变量中配置 `MINERU_API_KEY`：
 
 Windows（PowerShell）：
 ```powershell
