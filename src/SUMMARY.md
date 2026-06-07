@@ -16,6 +16,7 @@
         - [项目配置（CLAUDE.md）](./softwares/Agent/claude-code/03-advanced-guide/claude-md.md)
         - [Git 协同](./softwares/Agent/claude-code/03-advanced-guide/git.md)
         - [工具与扩展](./softwares/Agent/claude-code/03-advanced-guide/tools.md)
+        - [上下文管理](./softwares/Agent/claude-code/03-advanced-guide/context-management.md)
         - [权限与安全](./softwares/Agent/claude-code/03-advanced-guide/security.md)
       - [高级用法](./softwares/Agent/claude-code/04-advanced/index.md)
         - [插件开发](./softwares/Agent/claude-code/04-advanced/plugins.md)
