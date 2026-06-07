@@ -36,6 +36,16 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
         CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"   # 禁用非必要网络请求
         CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK = "1"  # 禁用非流式回退
         CLAUDE_CODE_EFFORT_LEVEL = "max"                 # 推理深度设为最高
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW = "200000"       # 自动压缩窗口 token 阈值
+        DISABLE_AUTO_COMPACT = "1"                       # 禁用自动压缩
+        CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1"        # 禁用反馈问卷
+        CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL = "1"  # 禁用官方市场自动安装
+        CLAUDE_CODE_PLUGIN_PREFER_HTTPS = "1"            # 优先使用 HTTPS 协议
+        DISABLE_DOCTOR_COMMAND = "1"                     # 禁用 /doctor 命令
+        DISABLE_LOGIN_COMMAND = "1"                      # 禁用 /login 命令
+        DISABLE_LOGOUT_COMMAND = "1"                     # 禁用 /logout 命令
+        DO_NOT_TRACK = "1"                               # 拒绝遥测数据收集
+        DISABLE_UPGRADE_COMMAND = "1"                    # 禁用 /upgrade 命令
     }
 } | ConvertTo-Json | Out-File $env:USERPROFILE\.claude\settings.json -Encoding UTF8
 ```
@@ -71,7 +81,17 @@ cat > ~/.claude/settings.json << EOF
     "CLAUDE_CODE_SUBAGENT_MODEL": "deepseek-v4-pro",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK": "1",
-    "CLAUDE_CODE_EFFORT_LEVEL": "max"
+    "CLAUDE_CODE_EFFORT_LEVEL": "max",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
+    "DISABLE_AUTO_COMPACT": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL": "1",
+    "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
+    "DISABLE_DOCTOR_COMMAND": "1",
+    "DISABLE_LOGIN_COMMAND": "1",
+    "DISABLE_LOGOUT_COMMAND": "1",
+    "DO_NOT_TRACK": "1",
+    "DISABLE_UPGRADE_COMMAND": "1"
   }
 }
 EOF
@@ -91,6 +111,16 @@ EOF
 | `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | 禁用非必要网络请求（如版本检查） |
 | `CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK` | 禁用非流式回退 |
 | `CLAUDE_CODE_EFFORT_LEVEL` | 推理深度（`max` 为最高） |
+| `CLAUDE_CODE_AUTO_COMPACT_WINDOW` | 自动压缩窗口 token 阈值 |
+| `DISABLE_AUTO_COMPACT` | 禁用自动压缩 |
+| `CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY` | 禁用反馈问卷 |
+| `CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL` | 禁用官方市场自动安装 |
+| `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` | 优先使用 HTTPS 协议 |
+| `DISABLE_DOCTOR_COMMAND` | 禁用 `/doctor` 命令 |
+| `DISABLE_LOGIN_COMMAND` | 禁用 `/login` 命令 |
+| `DISABLE_LOGOUT_COMMAND` | 禁用 `/logout` 命令 |
+| `DO_NOT_TRACK` | 拒绝遥测数据收集 |
+| `DISABLE_UPGRADE_COMMAND` | 禁用 `/upgrade` 命令 |
 
 ## VSCode 跳过登录
 
