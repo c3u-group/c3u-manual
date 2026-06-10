@@ -21,19 +21,23 @@ winget install Git.Git
 
 安装 Visual Studio Code ：
 ```powershell
-winget install Microsoft.VisualStudioCode```
+winget install Microsoft.VisualStudioCode
+```
 
 安装 Python ：
 ```powershell
-winget install Python.Python.3.12```
+winget install Python.Python.3.12
+```
 
 安装 uv（Python 包管理器，替代 pip）：
 ```powershell
-winget install astral-sh.uv```
+winget install astral-sh.uv
+```
 
 安装 Pandoc（文档格式转换，学术写作常用）：
 ```powershell
-winget install pandoc```
+winget install pandoc
+```
 
 ### Visual Studio Code 集成
 

@@ -123,22 +123,18 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `claude 
 GitHub 访问不稳定，创建了本地镜像仓库：
 
 ```bash
-claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/claude-plugins-official
-claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/andrej-karpathy-skills
-claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/academic-research-skills
-claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/c3u-ccplugins
+claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/andrej-karpathy-skills.git
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/academic-research-skills.git
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/c3u-ccplugins.git
 ```
 
 ### Superpowers
 
 14 个工程规范 skill，覆盖开发全流程。详细用法见 [附录](../05-appendix/plugins/superpowers-guide.md)。
 
-添加官方仓库（用本地镜像则跳过）：
-```bash
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
-```
-
 安装插件：
+```bash
 claude plugin install superpowers
 ```
 

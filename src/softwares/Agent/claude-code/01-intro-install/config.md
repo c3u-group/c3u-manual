@@ -39,7 +39,6 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
         CLAUDE_CODE_AUTO_COMPACT_WINDOW = "200000"       # 自动压缩窗口 token 阈值
         DISABLE_AUTO_COMPACT = "1"                       # 禁用自动压缩
         CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1"        # 禁用反馈问卷
-        CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL = "1"  # 禁用官方市场自动安装
         CLAUDE_CODE_PLUGIN_PREFER_HTTPS = "1"            # 优先使用 HTTPS 协议
         DISABLE_DOCTOR_COMMAND = "1"                     # 禁用 /doctor 命令
         DISABLE_LOGIN_COMMAND = "1"                      # 禁用 /login 命令
@@ -85,7 +84,6 @@ cat > ~/.claude/settings.json << EOF
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
     "DISABLE_AUTO_COMPACT": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL": "1",
     "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
     "DISABLE_DOCTOR_COMMAND": "1",
     "DISABLE_LOGIN_COMMAND": "1",
@@ -114,7 +112,6 @@ EOF
 | `CLAUDE_CODE_AUTO_COMPACT_WINDOW` | 自动压缩窗口 token 阈值 |
 | `DISABLE_AUTO_COMPACT` | 禁用自动压缩 |
 | `CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY` | 禁用反馈问卷 |
-| `CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL` | 禁用官方市场自动安装 |
 | `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` | 优先使用 HTTPS 协议 |
 | `DISABLE_DOCTOR_COMMAND` | 禁用 `/doctor` 命令 |
 | `DISABLE_LOGIN_COMMAND` | 禁用 `/login` 命令 |

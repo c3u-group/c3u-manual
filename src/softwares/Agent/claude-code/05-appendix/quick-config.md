@@ -66,7 +66,6 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
         CLAUDE_CODE_AUTO_COMPACT_WINDOW = "200000"
         DISABLE_AUTO_COMPACT = "1"
         CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1"
-        CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL = "1"
         CLAUDE_CODE_PLUGIN_PREFER_HTTPS = "1"
         DISABLE_DOCTOR_COMMAND = "1"
         DISABLE_LOGIN_COMMAND = "1"
@@ -105,12 +104,11 @@ GitHub 访问不稳定，创建了本地镜像仓库：
 $env:C3U_GIT_SERVER="<IP>:<PORT>"
 ```
 
-安装插件
 ```powershell
-claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/claude-plugins-official
-claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/andrej-karpathy-skills
-claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/academic-research-skills
-claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/c3u-ccplugins
+claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
+claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/andrej-karpathy-skills.git
+claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/academic-research-skills.git
+claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/c3u-ccplugins.git
 ```
 
 ### pyright-lsp
