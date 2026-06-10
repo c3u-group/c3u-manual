@@ -9,10 +9,6 @@ claude plugin marketplace add https://github.com/Imbad0202/academic-research-ski
 claude plugin install academic-research-skills
 ```
 
-> GitHub 访问可能不稳定，如安装失败，先设置代理：
-> macOS / Linux：`export HTTPS_PROXY=http://127.0.0.1:7890`
-> Windows：`$env:HTTPS_PROXY=http://127.0.0.1:7890`
-
 ## 使用建议
 
 使用 ARS 前建议将 Claude Code 推理深度调至最高，启用 workflow 级并发：

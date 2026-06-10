@@ -34,7 +34,7 @@
           - [Academic Research Skills](./softwares/Agent/claude-code/05-appendix/plugins/ars-guide.md)
           - [Superpowers](./softwares/Agent/claude-code/05-appendix/plugins/superpowers-guide.md)
           - [andrej-karpathy-skills](./softwares/Agent/claude-code/05-appendix/plugins/karpathy-guide.md)
-          - [zwzdcc-plugins](./softwares/Agent/claude-code/05-appendix/plugins/zwzdcc-guide.md)
+          - [c3u-ccplugins](./softwares/Agent/claude-code/05-appendix/plugins/c3u-ccplugins-guide.md)
     - [Claude for Office](./softwares/Agent/claude-for-office/intro.md)
       - [安装插件](./softwares/Agent/claude-for-office/01-plugin-install.md)
       - [部署 LiteLLM](./softwares/Agent/claude-for-office/02-litellm-deploy.md)

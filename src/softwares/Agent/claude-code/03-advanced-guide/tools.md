@@ -11,10 +11,10 @@
 Python 项目推荐安装 pyright：
 
 ```bash
-pip install pyright
+uv tool install pyright
 ```
 
-然后在安装 LSP plugin ：
+然后安装 LSP plugin（需先添加官方 marketplace，见下方推荐 Plugin）：
 
 ```bash
 claude plugin install pyright-lsp
@@ -120,17 +120,25 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `claude 
 
 ### 推荐 Plugin
 
-> GitHub 访问可能不稳定，如安装失败，先设置代理：
-> macOS / Linux：`export HTTPS_PROXY=http://127.0.0.1:7890`
-> Windows：`$env:HTTPS_PROXY=http://127.0.0.1:7890`
+GitHub 访问不稳定，创建了本地镜像仓库：
+
+```bash
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/claude-plugins-official
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/andrej-karpathy-skills
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/academic-research-skills
+claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/c3u-ccplugins
+```
 
 ### Superpowers
 
 14 个工程规范 skill，覆盖开发全流程。详细用法见 [附录](../05-appendix/plugins/superpowers-guide.md)。
 
-添加官方仓库并安装插件：
+添加官方仓库（用本地镜像则跳过）：
 ```bash
 claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
+```
+
+安装插件：
 claude plugin install superpowers
 ```
 
@@ -151,7 +159,7 @@ claude plugin install superpowers
 
 Karpathy 提出的四条编码纪律，遏制 AI 常见顽疾。详细说明见 [附录](../05-appendix/plugins/karpathy-guide.md)。
 
-添加仓库：
+添加仓库（用本地镜像则跳过）：
 ```bash
 claude plugin marketplace add https://github.com/forrestchang/andrej-karpathy-skills
 ```
@@ -172,7 +180,7 @@ claude plugin install andrej-karpathy-skills@karpathy-skills
 
 学术研究全流程：文献调研、论文撰写、同行评审、修订。详细用法见 [附录](../05-appendix/plugins/ars-guide.md)。
 
-添加仓库：
+添加仓库（用本地镜像则跳过）：
 ```bash
 claude plugin marketplace add https://github.com/Imbad0202/academic-research-skills
 ```
@@ -189,13 +197,13 @@ claude plugin install academic-research-skills
 | academic-paper-reviewer | 7 Agent，6 模式：主编 + 3 审稿人 + 魔鬼代言人，0-100 品质量表 |
 | academic-pipeline | 10 阶段全流程：调研→撰写→审查→修订→再审→定稿 |
 
-### zwzdcc-plugins
+### c3u-ccplugins
 
-自用 plugin 集合，按功能域划分为 4 个 plugin：文献检索、文献加工、输出审查与文档转换。详细用法见 [附录](../05-appendix/plugins/zwzdcc-guide.md)。
+自用 plugin 集合，按功能域划分为 4 个 plugin：文献检索、文献加工、输出审查与文档转换。详细用法见 [附录](../05-appendix/plugins/c3u-ccplugins-guide.md)。
 
-添加仓库：
+添加仓库（用本地镜像则跳过）：
 ```bash
-claude plugin marketplace add https://github.com/Zxzz106/zwzdcc-plugins
+claude plugin marketplace add https://github.com/c3u-group/c3u-ccplugins
 ```
 
 | Plugin | 用途 |

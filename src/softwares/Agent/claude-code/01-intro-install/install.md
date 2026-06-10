@@ -11,6 +11,12 @@ winget install Anthropic.ClaudeCode
 winget install Git.Git
 ```
 
+> 如果网络不稳定，先为 winget 设置代理再执行安装：
+> ```powershell
+> winget settings --enable ProxyCommandLineOptions
+> set WINGET_PROXY_URL=http://127.0.0.1:7890
+> ```
+
 ### 推荐：安装常用软件
 
 安装 Visual Studio Code ：

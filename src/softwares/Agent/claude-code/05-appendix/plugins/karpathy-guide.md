@@ -11,10 +11,6 @@ claude plugin marketplace add https://github.com/forrestchang/andrej-karpathy-sk
 claude plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
-> GitHub 访问可能不稳定，如安装失败，先设置代理：
-> macOS / Linux：`export HTTPS_PROXY=http://127.0.0.1:7890`
-> Windows：`$env:HTTPS_PROXY=http://127.0.0.1:7890`
-
 ## Think Before Coding — 先想再写
 
 **问题**：AI 倾向于接受你的描述并直接动手，即使你的描述有歧义或存在更简单的解法。结果方向错了，后面全是沉没成本。
