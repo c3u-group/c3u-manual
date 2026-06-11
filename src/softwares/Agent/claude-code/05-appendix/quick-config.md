@@ -20,18 +20,24 @@ New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile "$env:C3U_APPS_ROOT\bin\claude.exe"
 ```
 
-uv（zip 解压）：
+uv：
 
 ```powershell
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/uv/0.11.19/uv-x86_64-pc-windows-msvc.zip" -OutFile "$env:TEMP\uv.zip"
 Expand-Archive -Path "$env:TEMP\uv.zip" -DestinationPath "$env:C3U_APPS_ROOT\bin"
+[Environment]::SetEnvironmentVariable("UV_PYTHON_BIN_DIR", "$env:C3U_APPS_ROOT\uv\python\shims", "User")
+[Environment]::SetEnvironmentVariable("UV_PYTHON_INSTALL_DIR", "$env:C3U_APPS_ROOT\uv\python\versions", "User")
+[Environment]::SetEnvironmentVariable("UV_TOOL_BIN_DIR", "$env:C3U_APPS_ROOT\uv\tools\shims", "User")
+[Environment]::SetEnvironmentVariable("UV_TOOL_DIR", "$env:C3U_APPS_ROOT\uv\tools\versions", "User")
+[Environment]::SetEnvironmentVariable("UV_CACHE_DIR", "$env:C3U_APPS_ROOT\uv\cache", "User")
 ```
 
-Git / VSCode / Python（静默安装，免管理员）：
+Git（Portable 版，自解压） / VSCode / Python：
 
 ```powershell
-Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/git/<version>/Git-<version>-64-bit.exe" -OutFile "$env:TEMP\Git.exe"
-Start-Process -Wait -FilePath "$env:TEMP\Git.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\Git"" /VERYSILENT /NORESTART /ALLUSERS=0"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/git/2.54.0/PortableGit-2.54.0-64-bit.7z.exe" -OutFile "$env:TEMP\PortableGit.exe"
+Start-Process -Wait -FilePath "$env:TEMP\PortableGit.exe" -ArgumentList "-o`"$env:C3U_APPS_ROOT\Git`" -y"
+[Environment]::SetEnvironmentVariable("GIT_INSTALL_ROOT", "$env:C3U_APPS_ROOT\Git", "User")
 
 Invoke-WebRequest -Uri "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile "$env:TEMP\VSCodeUserSetup.exe"
 Start-Process -Wait -FilePath "$env:TEMP\VSCodeUserSetup.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
@@ -52,7 +58,9 @@ Expand-Archive -Path "$env:TEMP\pandoc.zip" -DestinationPath "$env:C3U_APPS_ROOT
 ```powershell
 $binPaths = @(
     "$env:C3U_APPS_ROOT\bin",
-    "$env:C3U_APPS_ROOT\Git\bin",
+    "$env:C3U_APPS_ROOT\uv\python\shims",
+    "$env:C3U_APPS_ROOT\uv\tools\shims",
+    "$env:C3U_APPS_ROOT\Git\cmd",
     "$env:C3U_APPS_ROOT\Python",
     "$env:C3U_APPS_ROOT\Python\Scripts",
     "$env:C3U_APPS_ROOT\Pandoc"
