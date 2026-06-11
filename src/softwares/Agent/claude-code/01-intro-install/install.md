@@ -59,11 +59,13 @@ Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generi
 Start-Process -Wait -FilePath "$env:TEMP\python.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
 ```
 
-### Pandoc（zip 解压）
+### Pandoc
 
 ```powershell
-Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/pandoc/<version>/pandoc-<version>-windows-x86_64.zip" -OutFile "$env:TEMP\pandoc.zip"
-Expand-Archive -Path "$env:TEMP\pandoc.zip" -DestinationPath "$env:C3U_APPS_ROOT\Pandoc"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/pandoc/3.10/pandoc-3.10-windows-x86_64.zip" -OutFile "$env:TEMP\pandoc.zip"
+Expand-Archive -Path "$env:TEMP\pandoc.zip" -DestinationPath "$env:TEMP\pandoc_extract"
+New-Item -ItemType Directory -Force -Path "$env:C3U_APPS_ROOT\Pandoc"
+Move-Item -Path "$env:TEMP\pandoc_extract\pandoc-3.10\*" -Destination "$env:C3U_APPS_ROOT\Pandoc" -Force
 ```
 
 ### 设置 PATH
