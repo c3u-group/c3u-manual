@@ -8,7 +8,7 @@
 
 ```powershell
 New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.local\bin
-Invoke-WebRequest -Uri "http://115.156.209.154:33000/Zxzz106/-/packages/generic/claude-code/2.1.169/files/1" -OutFile $env:USERPROFILE\.local\bin\claude.exe
+Invoke-WebRequest -Uri "http://115.156.209.154:33000/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile $env:USERPROFILE\.local\bin\claude.exe
 [Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
 ```
 
@@ -83,7 +83,7 @@ export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 ```bash
 mkdir -p ~/.local/bin
-curl -L "http://115.156.209.154:33000/Zxzz106/-/packages/generic/claude-code/2.1.169/files/1" -o ~/.local/bin/claude
+curl -L "http://115.156.209.154:33000/api/packages/Zxzz106/generic/claude-code/2.1.169/claude" -o ~/.local/bin/claude
 chmod +x ~/.local/bin/claude
 ```
 
