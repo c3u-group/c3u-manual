@@ -42,7 +42,7 @@ Start-Process -Wait -FilePath "$env:TEMP\PortableGit.exe" -ArgumentList "-o`"$en
 Invoke-WebRequest -Uri "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile "$env:TEMP\VSCodeUserSetup.exe"
 Start-Process -Wait -FilePath "$env:TEMP\VSCodeUserSetup.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
 
-Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/python/<version>/python-<version>-amd64.exe" -OutFile "$env:TEMP\python.exe"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/python/3.14.6/python-3.14.6-amd64.exe" -OutFile "$env:TEMP\python.exe"
 Start-Process -Wait -FilePath "$env:TEMP\python.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
 ```
 
