@@ -7,27 +7,48 @@
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
-$env:C3U_GIT_SERVER="<IP>:<PORT>"
-New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.local\bin
-Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile $env:USERPROFILE\.local\bin\claude.exe
-[Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+$env:C3U_APPS_ROOT = "D:\Apps"
+$env:C3U_GIT_SERVER = "<IP>:<PORT>"
 ```
 
-重新打开终端使 PATH 生效，然后执行：
+> 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
+
+单文件程序（直接下载，无需安装）：
 
 ```powershell
-winget install Git.Git
-winget install Microsoft.VisualStudioCode
-winget install Python.Python.3.12
-winget install astral-sh.uv
-winget install pandoc
+New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile "$env:C3U_APPS_ROOT\bin\claude.exe"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/..." -OutFile "$env:C3U_APPS_ROOT\bin\uv.exe"
 ```
 
-> 如果网络不稳定，先为 winget 设置代理再执行安装：
-> ```powershell
-> winget settings --enable ProxyCommandLineOptions
-> set WINGET_PROXY_URL=http://127.0.0.1:7890
-> ```
+Git / VSCode / Python（静默安装，免管理员）：
+
+```powershell
+Start-Process -Wait -FilePath "Git-2.XX.X-64-bit.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\Git"" /VERYSILENT /NORESTART /ALLUSERS=0"
+Start-Process -Wait -FilePath "VSCodeUserSetup-x64-XX.X.X.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
+Start-Process -Wait -FilePath "python-3.12.X-amd64.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
+```
+
+Pandoc（zip 解压，免安装）：
+
+```powershell
+Expand-Archive -Path "pandoc-XX.X-windows-x86_64.zip" -DestinationPath "$env:C3U_APPS_ROOT\Pandoc"
+```
+
+设置 PATH：
+
+```powershell
+$binPaths = @(
+    "$env:C3U_APPS_ROOT\bin",
+    "$env:C3U_APPS_ROOT\Git\bin",
+    "$env:C3U_APPS_ROOT\Python",
+    "$env:C3U_APPS_ROOT\Python\Scripts",
+    "$env:C3U_APPS_ROOT\Pandoc"
+)
+[Environment]::SetEnvironmentVariable("Path", ($binPaths -join ";") + ";" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+```
+
+> 重新打开终端，使 PATH 生效。
 
 ## 2. 配置 Git
 

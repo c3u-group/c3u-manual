@@ -2,46 +2,69 @@
 
 ## Windows
 
-### 安装 Claude Code
+### 设置安装路径
 
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
-$env:C3U_GIT_SERVER="<IP>:<PORT>"
-New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.local\bin
-Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile $env:USERPROFILE\.local\bin\claude.exe
-[Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+$env:C3U_APPS_ROOT = "D:\Apps"
+$env:C3U_GIT_SERVER = "<IP>:<PORT>"
 ```
 
-> 下载完成后需重新打开终端，使 PATH 生效。
+> 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
 
-### 安装 Git
+### Claude Code 与 uv（单文件程序）
+
+直接下载到 bin 目录，无需安装：
 
 ```powershell
-winget install Git.Git
+New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile "$env:C3U_APPS_ROOT\bin\claude.exe"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/..." -OutFile "$env:C3U_APPS_ROOT\bin\uv.exe"
 ```
 
-### 推荐：安装常用软件
+### Git
 
-安装 Visual Studio Code ：
 ```powershell
-winget install Microsoft.VisualStudioCode
+Start-Process -Wait -FilePath "Git-2.XX.X-64-bit.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\Git"" /VERYSILENT /NORESTART /ALLUSERS=0"
 ```
 
-安装 Python ：
+### Visual Studio Code
+
+需使用 **User Installer**（非 System Installer）：
+
 ```powershell
-winget install Python.Python.3.12
+Start-Process -Wait -FilePath "VSCodeUserSetup-x64-XX.X.X.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
 ```
 
-安装 uv（Python 包管理器，替代 pip）：
+### Python
+
 ```powershell
-winget install astral-sh.uv
+Start-Process -Wait -FilePath "python-3.12.X-amd64.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
 ```
 
-安装 Pandoc（文档格式转换，学术写作常用）：
+### Pandoc
+
+使用 zip 包解压，免安装：
+
 ```powershell
-winget install pandoc
+Expand-Archive -Path "pandoc-XX.X-windows-x86_64.zip" -DestinationPath "$env:C3U_APPS_ROOT\Pandoc"
 ```
+
+### 设置 PATH
+
+```powershell
+$binPaths = @(
+    "$env:C3U_APPS_ROOT\bin",
+    "$env:C3U_APPS_ROOT\Git\bin",
+    "$env:C3U_APPS_ROOT\Python",
+    "$env:C3U_APPS_ROOT\Python\Scripts",
+    "$env:C3U_APPS_ROOT\Pandoc"
+)
+[Environment]::SetEnvironmentVariable("Path", ($binPaths -join ";") + ";" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+```
+
+> 重新打开终端，使 PATH 生效。
 
 ### Visual Studio Code 集成
 
