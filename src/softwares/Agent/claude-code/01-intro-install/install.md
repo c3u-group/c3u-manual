@@ -81,18 +81,19 @@ export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 ### 安装 Claude Code
 
-```bash
-mkdir -p ~/.local/bin
-curl -L "http://115.156.209.154:33000/api/packages/Zxzz106/generic/claude-code/2.1.169/claude" -o ~/.local/bin/claude
-chmod +x ~/.local/bin/claude
-```
-
-确保 `~/.local/bin` 在 PATH 中：
+这一步会从 Anthropic 下载软件包，可能需要开启代理：
 
 ```bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+export HTTPS_PROXY=http://127.0.0.1:7890
 ```
+
+然后安装 Claude Code：
+
+```bash
+brew install claude-code
+```
+
+> 如果报错找不到 `brew` 命令，说明上一步的安装后配置没做或没生效，照 brew 安装完成后的屏幕提示操作即可。
 
 ### 推荐：安装常用软件
 
