@@ -41,7 +41,6 @@ Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generi
 Start-Process -Wait -FilePath "$env:TEMP\PortableGit.exe" -ArgumentList "-o`"$env:C3U_APPS_ROOT\Git`" -y"
 [Environment]::SetEnvironmentVariable("GIT_INSTALL_ROOT", "$env:C3U_APPS_ROOT\Git", "User")
 ```
-```
 
 ### Visual Studio Code
 
