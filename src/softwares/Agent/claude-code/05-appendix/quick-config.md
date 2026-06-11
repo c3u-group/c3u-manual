@@ -87,7 +87,7 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
 
 VSCode 插件需在设置中禁用登录提示：
 
-1. 右下角齿轮 → 设置，或 `Ctrl + ,`
+1. 左下角齿轮 → 设置，或 `Ctrl + ,`
 2. 搜索 `claudeCode.disableLoginPrompt`，勾选启用
 
 ## 7. 启动
