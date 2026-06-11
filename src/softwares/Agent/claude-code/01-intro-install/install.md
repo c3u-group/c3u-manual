@@ -13,42 +13,50 @@ $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 
 > 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
 
-### Claude Code 与 uv（单文件程序）
+### Claude Code（单文件程序）
 
-直接下载到 bin 目录，无需安装：
+直接下载到 bin 目录：
 
 ```powershell
 New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile "$env:C3U_APPS_ROOT\bin\claude.exe"
-Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/..." -OutFile "$env:C3U_APPS_ROOT\bin\uv.exe"
+```
+
+### uv（zip 解压）
+
+```powershell
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/uv/0.11.19/uv-x86_64-pc-windows-msvc.zip" -OutFile "$env:TEMP\uv.zip"
+Expand-Archive -Path "$env:TEMP\uv.zip" -DestinationPath "$env:C3U_APPS_ROOT\bin"
 ```
 
 ### Git
 
 ```powershell
-Start-Process -Wait -FilePath "Git-2.XX.X-64-bit.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\Git"" /VERYSILENT /NORESTART /ALLUSERS=0"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/git/<version>/Git-<version>-64-bit.exe" -OutFile "$env:TEMP\Git.exe"
+Start-Process -Wait -FilePath "$env:TEMP\Git.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\Git"" /VERYSILENT /NORESTART /ALLUSERS=0"
 ```
 
 ### Visual Studio Code
 
-需使用 **User Installer**（非 System Installer）：
+从官方下载 User Installer（免管理员）：
 
 ```powershell
-Start-Process -Wait -FilePath "VSCodeUserSetup-x64-XX.X.X.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
+Invoke-WebRequest -Uri "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile "$env:TEMP\VSCodeUserSetup.exe"
+Start-Process -Wait -FilePath "$env:TEMP\VSCodeUserSetup.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
 ```
 
 ### Python
 
 ```powershell
-Start-Process -Wait -FilePath "python-3.12.X-amd64.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/python/<version>/python-<version>-amd64.exe" -OutFile "$env:TEMP\python.exe"
+Start-Process -Wait -FilePath "$env:TEMP\python.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
 ```
 
-### Pandoc
-
-使用 zip 包解压，免安装：
+### Pandoc（zip 解压）
 
 ```powershell
-Expand-Archive -Path "pandoc-XX.X-windows-x86_64.zip" -DestinationPath "$env:C3U_APPS_ROOT\Pandoc"
+Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/pandoc/<version>/pandoc-<version>-windows-x86_64.zip" -OutFile "$env:TEMP\pandoc.zip"
+Expand-Archive -Path "$env:TEMP\pandoc.zip" -DestinationPath "$env:C3U_APPS_ROOT\Pandoc"
 ```
 
 ### 设置 PATH
