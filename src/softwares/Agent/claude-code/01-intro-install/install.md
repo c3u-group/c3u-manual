@@ -13,9 +13,7 @@ $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 
 > 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
 
-### Claude Code（单文件程序）
-
-直接下载到 bin 目录：
+### Claude Code
 
 ```powershell
 New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
@@ -34,7 +32,7 @@ Expand-Archive -Path "$env:TEMP\uv.zip" -DestinationPath "$env:C3U_APPS_ROOT\bin
 [Environment]::SetEnvironmentVariable("UV_CACHE_DIR", "$env:C3U_APPS_ROOT\uv\cache", "User")
 ```
 
-### Git（Portable 版，自解压）
+### Git
 
 ```powershell
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/git/2.54.0/PortableGit-2.54.0-64-bit.7z.exe" -OutFile "$env:TEMP\PortableGit.exe"
@@ -44,7 +42,7 @@ Start-Process -Wait -FilePath "$env:TEMP\PortableGit.exe" -ArgumentList "-o`"$en
 
 ### Visual Studio Code
 
-从官方下载 User Installer（免管理员）：
+从官方下载 User Installer：
 
 ```powershell
 Invoke-WebRequest -Uri "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile "$env:TEMP\VSCodeUserSetup.exe"

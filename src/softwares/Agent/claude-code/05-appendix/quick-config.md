@@ -13,7 +13,7 @@ $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 
 > 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
 
-Claude Code（单文件，直接下载）：
+Claude Code：
 
 ```powershell
 New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
@@ -32,7 +32,7 @@ Expand-Archive -Path "$env:TEMP\uv.zip" -DestinationPath "$env:C3U_APPS_ROOT\bin
 [Environment]::SetEnvironmentVariable("UV_CACHE_DIR", "$env:C3U_APPS_ROOT\uv\cache", "User")
 ```
 
-Git（Portable 版，自解压） / VSCode / Python：
+Git / VSCode / Python：
 
 ```powershell
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/git/2.54.0/PortableGit-2.54.0-64-bit.7z.exe" -OutFile "$env:TEMP\PortableGit.exe"
