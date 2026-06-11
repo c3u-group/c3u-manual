@@ -7,6 +7,7 @@
 按 `Win` 键，输入 `powershell`，回车，执行：
 
 ```powershell
+$ProgressPreference = 'SilentlyContinue'
 $env:C3U_APPS_ROOT = "D:\Apps"
 $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 ```
