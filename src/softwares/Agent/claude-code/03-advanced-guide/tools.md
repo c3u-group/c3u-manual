@@ -14,10 +14,10 @@ Python 项目推荐安装 pyright：
 uv tool install pyright
 ```
 
-然后安装 LSP plugin（需先添加官方 marketplace，见下方推荐 Plugin）：
+然后安装 LSP plugin（由 c3u-ccplugins 镜像上游）：
 
 ```bash
-claude plugin install pyright-lsp
+claude plugin install c3u-pyright-lsp@c3u-ccplugins
 ```
 
 ### 网络搜索
@@ -120,22 +120,20 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `claude 
 
 ### 推荐 Plugin
 
-GitHub 访问不稳定，创建了本地镜像仓库：
+GitHub 访问不稳定，通过本地镜像服务器注册。官方市场插件见 [Claude Plugins](https://claude.com/plugins)：
 
 ```bash
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
-claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/andrej-karpathy-skills.git
 claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/academic-research-skills.git
 claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/c3u-ccplugins.git
 ```
 
 ### Superpowers
 
-14 个工程规范 skill，覆盖开发全流程。详细用法见 [附录](../05-appendix/plugins/superpowers-guide.md)。
+14 个工程规范 skill，覆盖开发全流程。由 c3u-ccplugins 镜像上游。详细用法见 [附录](../05-appendix/plugins/superpowers-guide.md)。
 
 安装插件：
 ```bash
-claude plugin install superpowers
+claude plugin install c3u-superpowers@c3u-ccplugins
 ```
 
 | Skill | 用途 |
@@ -153,16 +151,11 @@ claude plugin install superpowers
 
 ### andrej-karpathy-skills
 
-Karpathy 提出的四条编码纪律，遏制 AI 常见顽疾。详细说明见 [附录](../05-appendix/plugins/karpathy-guide.md)。
-
-添加仓库（用本地镜像则跳过）：
-```bash
-claude plugin marketplace add https://github.com/forrestchang/andrej-karpathy-skills
-```
+Karpathy 提出的四条编码纪律，遏制 AI 常见顽疾。由 c3u-ccplugins 镜像上游。详细说明见 [附录](../05-appendix/plugins/karpathy-guide.md)。
 
 安装插件：
 ```bash
-claude plugin install andrej-karpathy-skills@karpathy-skills
+claude plugin install c3u-karpathy-guidelines@c3u-ccplugins
 ```
 
 | 原则 | 含义 |
@@ -195,12 +188,7 @@ claude plugin install academic-research-skills
 
 ### c3u-ccplugins
 
-自用 plugin 集合，按功能域划分为 4 个 plugin：文献检索、文献加工、输出审查与文档转换。详细用法见 [附录](../05-appendix/plugins/c3u-ccplugins-guide.md)。
-
-添加仓库（用本地镜像则跳过）：
-```bash
-claude plugin marketplace add https://github.com/c3u-group/c3u-ccplugins
-```
+自用 plugin 集合，含文献检索、文献加工、输出审查与文档转换 4 个 plugin，以及 superpowers 与 karpathy-skills 的上游镜像。详细用法见 [附录](../05-appendix/plugins/c3u-ccplugins-guide.md)。
 
 | Plugin | 用途 |
 |--------|------|

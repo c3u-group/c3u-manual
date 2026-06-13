@@ -153,35 +153,33 @@ VSCode 插件需在设置中禁用登录提示：
 使用步骤 1 中设置的 `$env:C3U_GIT_SERVER`，执行：
 
 ```powershell
-claude plugin marketplace add https://github.com/anthropics/claude-plugins-official
-claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/andrej-karpathy-skills.git
 claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/academic-research-skills.git
 claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/c3u-ccplugins.git
 ```
 
 ### pyright-lsp
 
-Python LSP 支持，提供代码智能（类型提示、跳转定义、查找引用）：
+Python LSP 支持，提供代码智能（类型提示、跳转定义、查找引用）。由 c3u-ccplugins 镜像上游：
 
 ```bash
 uv tool install pyright
-claude plugin install pyright-lsp
+claude plugin install c3u-pyright-lsp@c3u-ccplugins
 ```
 
 ### superpowers
 
-14 个工程规范 skill，覆盖开发全流程。详细用法见 [插件指南](./plugins/superpowers-guide.md)：
+14 个工程规范 skill，覆盖开发全流程。由 c3u-ccplugins 镜像上游。详细用法见 [插件指南](./plugins/superpowers-guide.md)：
 
 ```bash
-claude plugin install superpowers
+claude plugin install c3u-superpowers@c3u-ccplugins
 ```
 
 ### andrej-karpathy-skills
 
-Karpathy 四条编码原则（先想再写、简洁优先、精准修改、目标驱动）。详细用法见 [插件指南](./plugins/karpathy-guide.md)：
+Karpathy 四条编码原则（先想再写、简洁优先、精准修改、目标驱动）。由 c3u-ccplugins 镜像上游。详细用法见 [插件指南](./plugins/karpathy-guide.md)：
 
 ```bash
-claude plugin install andrej-karpathy-skills@karpathy-skills
+claude plugin install c3u-karpathy-guidelines@c3u-ccplugins
 ```
 
 ### academic-research-skills
@@ -194,7 +192,7 @@ claude plugin install academic-research-skills
 
 ### c3u-ccplugins
 
-自用 plugin 集合，按功能域划分为文献检索、文献加工、输出审查与文档转换 4 个 plugin。详细用法见 [插件指南](./plugins/c3u-ccplugins-guide.md)：
+自用 plugin 集合，含文献检索、文献加工、输出审查与文档转换 4 个 plugin，以及 superpowers 与 karpathy-skills 的上游镜像（见上方独立章节）。详细用法见 [插件指南](./plugins/c3u-ccplugins-guide.md)：
 
 ```bash
 claude plugin install literature-retrieval@c3u-ccplugins
