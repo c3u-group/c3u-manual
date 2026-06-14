@@ -194,7 +194,7 @@ claude plugin install academic-research-skills
 |--------|------|
 | literature-retrieval | 文献检索 MCP：Scopus（英） + 超星（中），含引用查询、RIS 导出、全文下载 |
 | file-converter | 文档转 Markdown MCP（MinerU API v4），支持 PDF/DOCX/PPTX/XLSX/图片/HTML |
-| logbook | 会话管理：跨会话交接、决策记录、注意力回顾 |
+| logbook | 会话管理：跨会话交接、决策记录、洞察捕获、注意力回顾 |
 | critique | 方案推敲（Socratic 追问） + AI 写作审查（19 项检查） |
 | literature-processing | 七阶段论文精读标注 + 段落级中英双语翻译，输出 .md + .html |
 

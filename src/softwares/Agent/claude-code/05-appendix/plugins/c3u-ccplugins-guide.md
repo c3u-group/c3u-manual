@@ -107,13 +107,14 @@ claude -p --permission-mode bypassPermissions 'Warm uv cache for file-converter@
 
 ## logbook — 会话管理
 
-四个 session-management skill，均为纯 skill 插件，无运行时依赖。
+五个 session-management skill，均为纯 skill 插件，无运行时依赖。
 
 | Skill | 功能 | 输出 |
 |-------|------|------|
 | `logbook:handoff` | 会话上下文结构化交接，三种模式（quick/standard/thorough） | `HANDOFF.md` |
 | `logbook:resume-handoff` | 从 HANDOFF.md 恢复会话，确认理解后生成 TODO 逐项执行 | 已执行任务 |
 | `logbook:decision-record` | 结构化决策记录（背景、选项对比、理由、复评条件） | `DECISIONS.md`（或 `--adr` 模式每决策一文件） |
+| `logbook:capture-insights` | 项目洞察与发现记录，按主题归类 | `INSIGHTS.md` |
 | `logbook:refocus` | 会话中注意力回顾，四问逐步引导 | 无（可指定路径输出笔记） |
 
 用法：
@@ -122,6 +123,7 @@ claude -p --permission-mode bypassPermissions 'Warm uv cache for file-converter@
 /handoff                     # 标准交接（默认）
 /handoff quick               # 快速交接（仅核心信息）
 /决策记录 采用 X 方案而非 Y 方案  # 追加决策记录
+/capture-insights            # 记录项目洞察
 /refocus                     # 会话中回顾
 ```
 
