@@ -120,7 +120,7 @@ Plugin 是 skill、命令、hook、agent 的打包分发单元，通过 `claude 
 
 ### 推荐 Plugin
 
-GitHub 访问不稳定，通过本地镜像服务器注册。官方市场插件见 [Claude Plugins](https://claude.com/plugins)：
+GitHub 访问不稳定，通过本地镜像服务器注册（需先设置 `$env:C3U_GIT_SERVER`，见[快速配置](../../05-appendix/quick-config.md)）。官方市场插件见 [Claude Plugins](https://claude.com/plugins)：
 
 ```bash
 claude plugin marketplace add http://${C3U_GIT_SERVER}/Zxzz106/academic-research-skills.git

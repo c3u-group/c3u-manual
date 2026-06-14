@@ -25,12 +25,12 @@ claude plugin install literature-processing@c3u-ccplugins
 
 Windows（PowerShell）：
 ```powershell
-[Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "你的API_KEY", "User")
+[Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "<你的API_KEY>", "User")
 ```
 
 macOS / Linux（写入 `~/.zshrc` 或 `~/.bashrc`，终端重启后生效）：
 ```bash
-echo 'export SCOPUS_API_KEY="你的API_KEY"' >> ~/.zshrc
+echo 'export SCOPUS_API_KEY="<你的API_KEY>"' >> ~/.zshrc
 ```
 
 | Tool | 功能 | 数据源 |
@@ -85,12 +85,12 @@ claude -p --permission-mode bypassPermissions 'Warm uv cache for literature-retr
 
 Windows（PowerShell）：
 ```powershell
-[Environment]::SetEnvironmentVariable("MINERU_API_KEY", "你的API_KEY", "User")
+[Environment]::SetEnvironmentVariable("MINERU_API_KEY", "<你的API_KEY>", "User")
 ```
 
 macOS / Linux：
 ```bash
-echo 'export MINERU_API_KEY="你的API_KEY"' >> ~/.zshrc
+echo 'export MINERU_API_KEY="<你的API_KEY>"' >> ~/.zshrc
 ```
 
 | Tool | 功能 |

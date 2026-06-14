@@ -12,7 +12,7 @@ $env:C3U_APPS_ROOT = "D:\Apps"
 $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 ```
 
-> 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
+> 可将 `D:\Apps` 改为其他磁盘或路径，将 `<IP>:<PORT>` 替换为实际的服务器地址。全文免管理员权限。
 
 ### Claude Code
 

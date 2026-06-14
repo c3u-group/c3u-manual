@@ -12,7 +12,7 @@ $env:C3U_APPS_ROOT = "D:\Apps"
 $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 ```
 
-> 可将 `D:\Apps` 改为其他磁盘或路径。全文免管理员权限。
+> 可将 `D:\Apps` 改为其他磁盘或路径，将 `<IP>:<PORT>` 替换为实际的服务器地址。全文免管理员权限。
 
 Claude Code：
 
@@ -93,7 +93,7 @@ git config --global user.email "your.email@example.com"
 设置 API Key（替换为已创建的 DeepSeek API Key）：
 
 ```powershell
-$env:DEEPSEEK_API_KEY='你的API_KEY'
+$env:DEEPSEEK_API_KEY='<你的API_KEY>'
 ```
 
 创建配置文件：
@@ -148,11 +148,12 @@ VSCode 插件需在设置中禁用登录提示：
 
 ## 8. 安装推荐 Plugin
 
-启动后在 Claude Code 中依次执行。
+退出 Claude Code，回到 PowerShell 依次执行。
 
-使用步骤 1 中设置的 `$env:C3U_GIT_SERVER`，执行：
+步骤 7 重启终端后，`$env:C3U_GIT_SERVER` 已失效，需重新设置（替换为实际的 IP:PORT）：
 
 ```powershell
+$env:C3U_GIT_SERVER = "<IP>:<PORT>"
 claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/academic-research-skills.git
 claude plugin marketplace add http://$env:C3U_GIT_SERVER/Zxzz106/c3u-ccplugins.git
 ```
@@ -205,13 +206,13 @@ claude plugin install literature-processing@c3u-ccplugins
 literature-retrieval 依赖 uv，需 Scopus API Key（超星仅需机构 IP，无需密钥）：前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建 Scopus API Key，然后设置环境变量：
 
 ```powershell
-[Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "你的API_KEY", "User")
+[Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "<你的API_KEY>", "User")
 ```
 
 file-converter 依赖 uv，需 MinerU API Key：前往 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建，然后设置环境变量：
 
 ```powershell
-[Environment]::SetEnvironmentVariable("MINERU_API_KEY", "你的API_KEY", "User")
+[Environment]::SetEnvironmentVariable("MINERU_API_KEY", "<你的API_KEY>", "User")
 ```
 
 首次使用前预热 uv 缓存：
