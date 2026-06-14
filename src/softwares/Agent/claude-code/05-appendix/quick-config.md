@@ -4,26 +4,24 @@
 
 ## 1. 安装
 
-按 `Win` 键，输入 `powershell`，回车，执行：
+按 `Win` 键，输入 `powershell`，回车。将以下代码中的 `D:\Apps` 改为其他磁盘或路径，`<IP>:<PORT>` 替换为实际的服务器地址，然后执行：
 
 ```powershell
-$ProgressPreference = 'SilentlyContinue'
 $env:C3U_APPS_ROOT = "D:\Apps"
 $env:C3U_GIT_SERVER = "<IP>:<PORT>"
 ```
 
-> 可将 `D:\Apps` 改为其他磁盘或路径，将 `<IP>:<PORT>` 替换为实际的服务器地址。全文免管理员权限。
-
-Claude Code：
+安装软件：
 
 ```powershell
+# 禁止 Invoke-WebRequest 进度条，大幅加快下载速度
+$ProgressPreference = 'SilentlyContinue'
+
+# Claude Code
 New-Item -ItemType Directory -Force -Path $env:C3U_APPS_ROOT\bin
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/claude-code/2.1.169/claude.exe" -OutFile "$env:C3U_APPS_ROOT\bin\claude.exe"
-```
 
-uv：
-
-```powershell
+# uv
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/uv/0.11.19/uv-x86_64-pc-windows-msvc.zip" -OutFile "$env:TEMP\uv.zip"
 Expand-Archive -Path "$env:TEMP\uv.zip" -DestinationPath "$env:C3U_APPS_ROOT\bin"
 [Environment]::SetEnvironmentVariable("UV_PYTHON_BIN_DIR", "$env:C3U_APPS_ROOT\uv\python\shims", "User")
@@ -31,34 +29,27 @@ Expand-Archive -Path "$env:TEMP\uv.zip" -DestinationPath "$env:C3U_APPS_ROOT\bin
 [Environment]::SetEnvironmentVariable("UV_TOOL_BIN_DIR", "$env:C3U_APPS_ROOT\uv\tools\shims", "User")
 [Environment]::SetEnvironmentVariable("UV_TOOL_DIR", "$env:C3U_APPS_ROOT\uv\tools\versions", "User")
 [Environment]::SetEnvironmentVariable("UV_CACHE_DIR", "$env:C3U_APPS_ROOT\uv\cache", "User")
-```
 
-Git / VSCode / Python：
-
-```powershell
+# Git
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/git/2.54.0/PortableGit-2.54.0-64-bit.7z.exe" -OutFile "$env:TEMP\PortableGit.exe"
 Start-Process -Wait -FilePath "$env:TEMP\PortableGit.exe" -ArgumentList "-o`"$env:C3U_APPS_ROOT\Git`" -y"
 [Environment]::SetEnvironmentVariable("GIT_INSTALL_ROOT", "$env:C3U_APPS_ROOT\Git", "User")
 
+# Visual Studio Code
 Invoke-WebRequest -Uri "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile "$env:TEMP\VSCodeUserSetup.exe"
 Start-Process -Wait -FilePath "$env:TEMP\VSCodeUserSetup.exe" -ArgumentList "/DIR=""$env:C3U_APPS_ROOT\VSCode"" /VERYSILENT /MERGETASKS=!runcode"
 
+# Python
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/python/3.14.6/python-3.14.6-amd64.exe" -OutFile "$env:TEMP\python.exe"
 Start-Process -Wait -FilePath "$env:TEMP\python.exe" -ArgumentList "/quiet InstallAllUsers=0 PrependPath=0 TargetDir=""$env:C3U_APPS_ROOT\Python"""
-```
 
-Pandoc：
-
-```powershell
+# Pandoc
 Invoke-WebRequest -Uri "http://${env:C3U_GIT_SERVER}/api/packages/Zxzz106/generic/pandoc/3.10/pandoc-3.10-windows-x86_64.zip" -OutFile "$env:TEMP\pandoc.zip"
 Expand-Archive -Path "$env:TEMP\pandoc.zip" -DestinationPath "$env:TEMP\pandoc_extract"
 New-Item -ItemType Directory -Force -Path "$env:C3U_APPS_ROOT\Pandoc"
 Move-Item -Path "$env:TEMP\pandoc_extract\pandoc-3.10\*" -Destination "$env:C3U_APPS_ROOT\Pandoc" -Force
-```
 
-设置 PATH：
-
-```powershell
+# 设置 PATH
 $binPaths = @(
     "$env:C3U_APPS_ROOT\bin",
     "$env:C3U_APPS_ROOT\uv\python\shims",
@@ -203,19 +194,19 @@ claude plugin install critique@c3u-ccplugins
 claude plugin install literature-processing@c3u-ccplugins
 ```
 
-literature-retrieval 依赖 uv，需 Scopus API Key（超星仅需机构 IP，无需密钥）：前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建 Scopus API Key，然后设置环境变量：
+literature-retrieval 依赖 uv。scopus-api 需 Scopus API Key（超星仅需机构 IP，无需密钥），前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建，然后设置环境变量：
 
 ```powershell
 [Environment]::SetEnvironmentVariable("SCOPUS_API_KEY", "<你的API_KEY>", "User")
 ```
 
-file-converter 依赖 uv，需 MinerU API Key：前往 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建，然后设置环境变量：
+file-converter 依赖 uv。需 MinerU API Key，前往 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建，然后设置环境变量：
 
 ```powershell
 [Environment]::SetEnvironmentVariable("MINERU_API_KEY", "<你的API_KEY>", "User")
 ```
 
-首次使用前预热 uv 缓存：
+以上 MCP server 底层通过 `uv run` 启动，首次调用时 `uv run` 会自动安装依赖。网络较差时可能超时，可预先手动预热：
 
 ```bash
 claude -p --permission-mode bypassPermissions 'Warm uv cache for literature-retrieval@c3u-ccplugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/chaoxing/mcp_server.py --test && uv run ${CLAUDE_PLUGIN_ROOT}/servers/scopus/mcp_server.py --test'
