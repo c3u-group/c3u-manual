@@ -188,13 +188,14 @@ claude plugin install academic-research-skills
 
 ### c3u-ccplugins
 
-自用 plugin 集合，含文献检索、文献加工、输出审查与文档转换 4 个 plugin，以及 superpowers 与 karpathy-skills 的上游镜像。详细用法见 [附录](../05-appendix/plugins/c3u-ccplugins-guide.md)。
+自用 plugin 集合，含文献检索、文档转换、会话管理、输出审查与文献加工 5 个 plugin，以及 superpowers 与 karpathy-skills 的上游镜像。详细用法见 [附录](../05-appendix/plugins/c3u-ccplugins-guide.md)。
 
 | Plugin | 用途 |
 |--------|------|
 | literature-retrieval | 文献检索 MCP：Scopus（英） + 超星（中），含引用查询、RIS 导出、全文下载 |
-| literature-processing | 七阶段论文精读标注 + 段落级中英双语翻译，输出 .md + .html |
-| critique | 方案推敲（Socratic 追问） + AI 写作审查（18 项检查） |
 | file-converter | 文档转 Markdown MCP（MinerU API v4），支持 PDF/DOCX/PPTX/XLSX/图片/HTML |
+| logbook | 会话管理：跨会话交接、决策记录、注意力回顾 |
+| critique | 方案推敲（Socratic 追问） + AI 写作审查（19 项检查） |
+| literature-processing | 七阶段论文精读标注 + 段落级中英双语翻译，输出 .md + .html |
 
 以上覆盖的是安装和使用现成的 Plugin。若需要自己开发 Plugin，见[插件开发](../04-advanced/plugins.md)。

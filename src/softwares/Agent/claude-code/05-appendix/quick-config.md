@@ -192,13 +192,14 @@ claude plugin install academic-research-skills
 
 ### c3u-ccplugins
 
-自用 plugin 集合，含文献检索、文献加工、输出审查与文档转换 4 个 plugin，以及 superpowers 与 karpathy-skills 的上游镜像（见上方独立章节）。详细用法见 [插件指南](./plugins/c3u-ccplugins-guide.md)：
+自用 plugin 集合，含文献检索、文档转换、会话管理、输出审查与文献加工 5 个 plugin，以及 superpowers 与 karpathy-skills 的上游镜像（见上方独立章节）。详细用法见 [插件指南](./plugins/c3u-ccplugins-guide.md)：
 
 ```bash
 claude plugin install literature-retrieval@c3u-ccplugins
-claude plugin install literature-processing@c3u-ccplugins
-claude plugin install critique@c3u-ccplugins
 claude plugin install file-converter@c3u-ccplugins
+claude plugin install logbook@c3u-ccplugins
+claude plugin install critique@c3u-ccplugins
+claude plugin install literature-processing@c3u-ccplugins
 ```
 
 literature-retrieval 依赖 uv，需 Scopus API Key（超星仅需机构 IP，无需密钥）：前往 [Elsevier Developer Portal](https://dev.elsevier.com/apikey/manage) 创建 Scopus API Key，然后设置环境变量：

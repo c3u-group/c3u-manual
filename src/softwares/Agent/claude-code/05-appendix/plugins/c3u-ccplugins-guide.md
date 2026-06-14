@@ -1,15 +1,16 @@
 # c3u-ccplugins 使用指南
 
-自用 Plugin 集合，按功能域划分为 4 个 plugin：文献检索、文献加工、输出审查与文档转换。
+自用 Plugin 集合，按功能域划分为 5 个 plugin：文献检索、文档转换、会话管理、输出审查与文献加工。
 
 ## 安装
 
 ```bash
 claude plugin marketplace add https://github.com/c3u-group/c3u-ccplugins
 claude plugin install literature-retrieval@c3u-ccplugins
-claude plugin install literature-processing@c3u-ccplugins
-claude plugin install critique@c3u-ccplugins
 claude plugin install file-converter@c3u-ccplugins
+claude plugin install logbook@c3u-ccplugins
+claude plugin install critique@c3u-ccplugins
+claude plugin install literature-processing@c3u-ccplugins
 ```
 
 安装后重启 Claude Code。
@@ -76,6 +77,87 @@ Su=钙循环*碳捕集
 claude -p --permission-mode bypassPermissions 'Warm uv cache for literature-retrieval@c3u-ccplugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/chaoxing/mcp_server.py --test && uv run ${CLAUDE_PLUGIN_ROOT}/servers/scopus/mcp_server.py --test'
 ```
 
+## file-converter — 文档转 Markdown
+
+基于 MinerU API v4 的 MCP 工具集，将文档转换为 Markdown。支持 PDF、DOCX、PPTX、XLSX、图片、HTML 等格式。异步两步流程：上传返回 `batch_id`，轮询下载结果。
+
+需在 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建 API Key，并在系统环境变量中配置 `MINERU_API_KEY`：
+
+Windows（PowerShell）：
+```powershell
+[Environment]::SetEnvironmentVariable("MINERU_API_KEY", "你的API_KEY", "User")
+```
+
+macOS / Linux：
+```bash
+echo 'export MINERU_API_KEY="你的API_KEY"' >> ~/.zshrc
+```
+
+| Tool | 功能 |
+|------|------|
+| `convert_to_markdown` | 上传文件，返回 `batch_id` |
+| `get_conversion_result` | 按 `batch_id` 查询并下载结果 |
+
+PDF 超过 200 页自动拆分，每块 ≤200 页。文件上限 200 MB。模型：`vlm`（默认）、`pipeline`、`MinerU-HTML`（HTML 自动选用）。
+
+首次使用前预热 uv 缓存：
+```bash
+claude -p --permission-mode bypassPermissions 'Warm uv cache for file-converter@c3u-ccplugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/mcp_server.py --test'
+```
+
+## logbook — 会话管理
+
+四个 session-management skill，均为纯 skill 插件，无运行时依赖。
+
+| Skill | 功能 | 输出 |
+|-------|------|------|
+| `logbook:handoff` | 会话上下文结构化交接，三种模式（quick/standard/thorough） | `HANDOFF.md` |
+| `logbook:resume-handoff` | 从 HANDOFF.md 恢复会话，确认理解后生成 TODO 逐项执行 | 已执行任务 |
+| `logbook:decision-record` | 结构化决策记录（背景、选项对比、理由、复评条件） | `DECISIONS.md`（或 `--adr` 模式每决策一文件） |
+| `logbook:refocus` | 会话中注意力回顾，四问逐步引导 | 无（可指定路径输出笔记） |
+
+用法：
+
+```text
+/handoff                     # 标准交接（默认）
+/handoff quick               # 快速交接（仅核心信息）
+/决策记录 采用 X 方案而非 Y 方案  # 追加决策记录
+/refocus                     # 会话中回顾
+```
+
+## critique — 输出审查
+
+两个 skill：`grill-me`（方案推敲）与 `ai-writing-check`（AI 写作审查）。均只报告问题，不自动修改。
+
+### grill-me — 方案推敲
+
+就方案或设计持续追问用户，逐个遍历决策树分支，直至达成共识。适用于需求梳理、架构推演、风险评估。
+
+用法：
+
+```text
+grill me
+```
+
+### ai-writing-check — AI 写作审查
+
+检查 LLM 生成文本的 19 项常见缺陷，分四组：
+
+| 组别 | 项数 | 关注点 |
+|------|:----:|--------|
+| 修辞与证据边界 | 10 | 绝对化、过度拔高、修辞膨胀、主观排序、替人决策、虚假归因、强行升华、表演共情、预设站队、伪造精确 |
+| 引用与格式 | 4 | 引述准确性、引述语境、引述密度、格式规范 |
+| 结构与术语 | 3 | 结构自洽、术语一致性、数据呈现 |
+| 语言自然度 | 2 | 翻译腔（8 种常见中英对译模式）、括号与破折号密度 |
+
+按类别报告违规项，附行号引用和修正建议。
+
+用法：
+
+```text
+check AI writing
+```
+
 ## literature-processing — 文献加工
 
 两个 skill：`intensive-reading`（七阶段论文精读标注）与 `bilingual-translation`（段落级中英双语翻译）。
@@ -112,67 +194,6 @@ claude -p --permission-mode bypassPermissions 'Warm uv cache for literature-retr
 
 ```text
 双语翻译 path/to/paper.md
-```
-
-## critique — 输出审查
-
-两个 skill：`grill-me`（方案推敲）与 `ai-writing-check`（AI 写作审查）。均只报告问题，不自动修改。
-
-### grill-me — 方案推敲
-
-就方案或设计持续追问用户，逐个遍历决策树分支，直至达成共识。适用于需求梳理、架构推演、风险评估。
-
-用法：
-
-```text
-grill me
-```
-
-### ai-writing-check — AI 写作审查
-
-检查 LLM 生成文本的 18 项常见缺陷，分四组：
-
-| 组别 | 项数 | 关注点 |
-|------|:----:|--------|
-| 修辞与证据边界 | 10 | 绝对化、过度拔高、修辞膨胀、主观排序、替人决策、虚假归因、强行升华、表演共情、预设站队、伪造精确 |
-| 引用与格式 | 4 | 引述准确性、引述语境、引述密度、格式规范 |
-| 结构与术语 | 3 | 结构自洽、术语一致性、数据呈现 |
-| 语言自然度 | 1 | 翻译腔（8 种常见中英对译模式） |
-
-按类别报告违规项，附行号引用和修正建议。
-
-用法：
-
-```text
-check AI writing
-```
-
-## file-converter — 文档转 Markdown
-
-基于 MinerU API v4 的 MCP 工具集，将文档转换为 Markdown。支持 PDF、DOCX、PPTX、XLSX、图片、HTML 等格式。异步两步流程：上传返回 `batch_id`，轮询下载结果。
-
-需在 [MinerU 开放平台](https://mineru.net/apiManage/token) 创建 API Key，并在系统环境变量中配置 `MINERU_API_KEY`：
-
-Windows（PowerShell）：
-```powershell
-[Environment]::SetEnvironmentVariable("MINERU_API_KEY", "你的API_KEY", "User")
-```
-
-macOS / Linux：
-```bash
-echo 'export MINERU_API_KEY="你的API_KEY"' >> ~/.zshrc
-```
-
-| Tool | 功能 |
-|------|------|
-| `convert_to_markdown` | 上传文件，返回 `batch_id` |
-| `get_conversion_result` | 按 `batch_id` 查询并下载结果 |
-
-PDF 超过 200 页自动拆分，每块 ≤200 页。文件上限 200 MB。模型：`vlm`（默认）、`pipeline`、`MinerU-HTML`（HTML 自动选用）。
-
-首次使用前预热 uv 缓存：
-```bash
-claude -p --permission-mode bypassPermissions 'Warm uv cache for file-converter@c3u-ccplugins: run uv run ${CLAUDE_PLUGIN_ROOT}/servers/mcp_server.py --test'
 ```
 
 ## 更多
