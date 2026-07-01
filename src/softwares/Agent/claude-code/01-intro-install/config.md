@@ -28,7 +28,7 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
     env = @{
         ANTHROPIC_AUTH_TOKEN = $env:DEEPSEEK_API_KEY         # API 密钥
         ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic"  # 将请求发往 DeepSeek
-        ANTHROPIC_MODEL = "deepseek-v4-pro[1m]"               # 默认模型
+        ANTHROPIC_MODEL = "deepseek-v4-flash[1m]"               # 默认模型
         ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash"   # 轻量任务模型
         ANTHROPIC_DEFAULT_SONNET_MODEL = "deepseek-v4-pro"    # 中等任务模型
         ANTHROPIC_DEFAULT_OPUS_MODEL = "deepseek-v4-pro"      # 复杂任务模型
@@ -36,7 +36,6 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
         CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"   # 禁用非必要网络请求
         CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK = "1"  # 禁用非流式回退
         CLAUDE_CODE_EFFORT_LEVEL = "max"                 # 推理深度设为最高
-        CLAUDE_CODE_AUTO_COMPACT_WINDOW = "200000"       # 自动压缩窗口 token 阈值
         DISABLE_AUTO_COMPACT = "1"                       # 禁用自动压缩
         CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1"        # 禁用反馈问卷
         CLAUDE_CODE_PLUGIN_PREFER_HTTPS = "1"            # 优先使用 HTTPS 协议
@@ -73,7 +72,7 @@ cat > ~/.claude/settings.json << EOF
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "$DEEPSEEK_API_KEY",
     "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-    "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_MODEL": "deepseek-v4-flash[1m]",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
@@ -81,7 +80,6 @@ cat > ~/.claude/settings.json << EOF
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK": "1",
     "CLAUDE_CODE_EFFORT_LEVEL": "max",
-    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
     "DISABLE_AUTO_COMPACT": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
@@ -109,7 +107,6 @@ EOF
 | `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | 禁用非必要网络请求（如版本检查） |
 | `CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK` | 禁用非流式回退 |
 | `CLAUDE_CODE_EFFORT_LEVEL` | 推理深度（`max` 为最高） |
-| `CLAUDE_CODE_AUTO_COMPACT_WINDOW` | 自动压缩窗口 token 阈值 |
 | `DISABLE_AUTO_COMPACT` | 禁用自动压缩 |
 | `CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY` | 禁用反馈问卷 |
 | `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` | 优先使用 HTTPS 协议 |

@@ -98,7 +98,7 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
     env = @{
         ANTHROPIC_AUTH_TOKEN = $env:DEEPSEEK_API_KEY
         ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic"
-        ANTHROPIC_MODEL = "deepseek-v4-pro[1m]"
+        ANTHROPIC_MODEL = "deepseek-v4-flash[1m]"
         ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash"
         ANTHROPIC_DEFAULT_SONNET_MODEL = "deepseek-v4-pro"
         ANTHROPIC_DEFAULT_OPUS_MODEL = "deepseek-v4-pro"
@@ -106,7 +106,6 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.claude
         CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"
         CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK = "1"
         CLAUDE_CODE_EFFORT_LEVEL = "max"
-        CLAUDE_CODE_AUTO_COMPACT_WINDOW = "200000"
         DISABLE_AUTO_COMPACT = "1"
         CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1"
         CLAUDE_CODE_PLUGIN_PREFER_HTTPS = "1"
